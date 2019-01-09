@@ -7,13 +7,33 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "home" */ '../pages/Home')
+      name: 'Splash',
+      redirect: '/welcome',
+      component: () =>
+        import(/* webpackChunkName: "Splash" */ '../layout/splash'),
+      children: [
+        {
+          path: '/welcome',
+          name: 'SplashWelcome',
+          component: () =>
+            import(/* webpackChunkName: "SplashWelcome" */ '../pages/splash/welcome')
+        }
+      ]
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ '../pages/About')
+      path: '/admin',
+      name: 'Admin',
+      redirect: '/admin/dashboard',
+      component: () =>
+        import(/* webpackChunkName: "Admin" */ '../layout/admin'),
+      children: [
+        {
+          path: '/admin/dashboard',
+          name: 'AdminDashboard',
+          component: () =>
+            import(/* webpackChunkName: "AdminDashboard" */ '../pages/admin/dashboard')
+        }
+      ]
     }
   ]
 })
