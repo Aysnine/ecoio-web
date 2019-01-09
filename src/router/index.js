@@ -8,12 +8,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import(/* webpackChunkName: "home" */ './pages/Home')
+      component: () => import(/* webpackChunkName: "home" */ '../pages/Home')
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './pages/About')
+      component: () => import(/* webpackChunkName: "about" */ '../pages/About')
     }
   ]
 })
