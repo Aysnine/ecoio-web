@@ -3,5 +3,7 @@
     p admin
     .nav
       router-link(to='/dashboard') dashboard
-    router-view
+    transition(name='el-fade-in', mode='out-in')
+      keep-alive
+        router-view
 </template>

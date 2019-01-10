@@ -1,8 +1,6 @@
 <template lang="pug">
   #app
-    .nav
-      router-link(to='/') splash
-      | |
-      router-link(to='/admin') admin
-    router-view
+    transition(name='el-fade-in', mode='out-in')
+      keep-alive
+        router-view
 </template>

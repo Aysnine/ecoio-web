@@ -1,3 +1,3 @@
 <template lang="pug">
-  div welcome
+  p device
 </template>

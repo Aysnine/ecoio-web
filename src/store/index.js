@@ -3,26 +3,25 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-/**
- * Auto import store modules like:
- *  ./modules/[moduleName]/index.js => store.dispatch('[moduleName]')
- *  ./modules/[moduleName]/[subModuleName]/index.js => store.dispatch('[moduleName]/[subModuleName]')
- */
-const modules = (r =>
-  r
-    .keys()
-    .reduce(
-      (x, key) => (
-        key.match(/\/(.+)\//)[1] ? (x[key.match(/\/(.+)\//)[1]] = r(key)) : 0, x
-      ),
-      {}
-    ))(require.context('./modules', true, /index.js$/))
-
-export default new Vuex.Store({
-  modules,
-
+const store = new Vuex.Store({
   /* Root */
   state: {},
   mutations: {},
   actions: {}
 })
+
+/**
+ * Auto import store modules like:
+ *  ./modules/[moduleName]/index.js => store.dispatch('[moduleName]')
+ *  ./modules/[moduleName]/[subModuleName]/index.js => store.dispatch('[moduleName]/[subModuleName]')
+ */
+;(r =>
+  r
+    .keys()
+    .sort((a, b) => a.length - b.length)
+    .forEach(key => {
+      let rst = key.match(/\/(.+)\//)[1]
+      rst && store.registerModule(rst.split('/'), r(key).default || r(key))
+    }))(require.context('./modules', true, /index.js$/))
+
+export default store
