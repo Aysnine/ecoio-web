@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "element-ui": "^2.4.11",
+    "lodash": "^4.17.11",
     "nib": "^1.1.2",
     "normalize.css": "^8.0.1",
     "register-service-worker": "^1.5.2",
