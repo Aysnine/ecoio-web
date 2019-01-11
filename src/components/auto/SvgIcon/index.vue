@@ -22,11 +22,7 @@ export default {
       return `#icon-${this.icon}`
     },
     svgClass() {
-      if (this.className) {
-        return 'svg-icon ' + this.className
-      } else {
-        return 'svg-icon'
-      }
+      return `svg-icon ${this.className}`
     }
   }
 }
@@ -34,9 +30,15 @@ export default {
 
 <style lang="stylus" scoped>
 .svg-icon
-  width 1.25em
-  height 1.25em
-  vertical-align -0.25em
+  width 1em
+  height 1em
+  vertical-align -0.125em
   fill currentColor
   overflow hidden
+  &.M
+    width 1.25em
+    height 1.25em
+    vertical-align -0.25em
+  &.B
+    vertical-align bottom
 </style>
