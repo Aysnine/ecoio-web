@@ -1,3 +1,3 @@
 <template lang="pug">
-  p device
+  div device
 </template>

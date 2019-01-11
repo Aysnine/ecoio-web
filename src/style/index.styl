@@ -7,29 +7,64 @@ body
 
 .hero-bg
   background-image linear-gradient(344deg, #43cbff 0%, #9708cc 100%)
+.thin-bg
+  background rgba(58, 142, 230, 0.07)
+
+.hero-shadow-top::after
+  content ''
+  position absolute
+  top -56px
+  left 0
+  right 0
+  box-shadow rgba(163, 142, 183, 0.08) 0px 2px 6px 0px
+  height 56px
 
 /* Custom Nav Menu stand by el-menu */
 .ghost-menu
-  &::after
-    display none
-  &.el-menu--horizontal>.el-menu-item
-  &.el-menu--horizontal>.el-menu-item.is-active
-  &.el-menu--horizontal>.el-submenu .el-submenu__title
-  &.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
-  &.el-menu--horizontal
-    border-bottom none
-  &.el-menu--horizontal>.el-menu-item:not(.is-disabled):hover
-  &.el-menu--horizontal>.el-menu-item:not(.is-disabled):focus
-  &.el-menu--horizontal>.el-submenu .el-submenu__title:hover
+  &--vertical
+    border-right none
     background-color transparent
-  &.el-menu--horizontal>.el-menu-item
-  &.el-menu--horizontal>.el-menu-item i
-  &.el-menu--horizontal>.el-menu-item:hover
-  &.el-menu--horizontal>.el-submenu .el-submenu__title
-  &.el-menu--horizontal>.el-submenu .el-submenu__title i
-    color #ffffffbf
-  &.el-menu--horizontal>.el-menu-item.is-active
-  &.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
-  &.el-menu--horizontal>.el-menu-item.is-active i
-  &.el-menu--horizontal>.el-submenu.is-active .el-submenu__title i
-    color #ffffff
+    .el-menu-item
+      color #ffffffbf
+    .el-menu-item:focus
+    .el-menu-item:hover
+      background-color transparent
+    .el-menu-item.is-active
+      color #fff
+    .el-menu-item
+    .el-submenu__title
+      height 60px
+      line-height 60px
+    .el-menu-item:hover
+    .el-menu-item.is-active
+      background rgba(0,0,0,0.102)
+    .el-submenu__title
+    .el-submenu__title .el-submenu__icon-arrow
+      color #ffffffbf
+    .el-submenu__title:hover
+    .el-menu--inline
+      background-color transparent
+  &--horizontal
+    &::after
+      display none
+    &.el-menu--horizontal>.el-menu-item
+    &.el-menu--horizontal>.el-menu-item.is-active
+    &.el-menu--horizontal>.el-submenu .el-submenu__title
+    &.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
+    &.el-menu--horizontal
+      border-bottom none
+    &.el-menu--horizontal>.el-menu-item:not(.is-disabled):hover
+    &.el-menu--horizontal>.el-menu-item:not(.is-disabled):focus
+    &.el-menu--horizontal>.el-submenu .el-submenu__title:hover
+      background-color transparent
+    &.el-menu--horizontal>.el-menu-item
+    &.el-menu--horizontal>.el-menu-item i
+    &.el-menu--horizontal>.el-menu-item:hover
+    &.el-menu--horizontal>.el-submenu .el-submenu__title
+    &.el-menu--horizontal>.el-submenu .el-submenu__title i
+      color #ffffffbf
+    &.el-menu--horizontal>.el-menu-item.is-active
+    &.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
+    &.el-menu--horizontal>.el-menu-item.is-active i
+    &.el-menu--horizontal>.el-submenu.is-active .el-submenu__title i
+      color #ffffff

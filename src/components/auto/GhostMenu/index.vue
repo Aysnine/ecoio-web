@@ -1,8 +1,8 @@
 <template lang="pug">
-  el-menu.ghost-menu(:default-active='$route.path', router, :mode='mode', menu-trigger='hover')
+  el-menu.ghost-menu(:default-active='$route.path', router, :mode='mode', menu-trigger='hover', :class='"ghost-menu--" + mode')
     template(v-for='item in menu')
-      menu-items(v-if='item.children', :item='item', :class='{ "F-R": item.align === "right" }')
-      menu-item(v-else, :item='item', :class='{ "F-R": item.align === "right" }')
+      menu-items(v-if='item.children', :item='item', :class='{ "F-R": mode === "horizontal" && item.align === "right" }')
+      menu-item(v-else, :item='item', :class='{ "F-R": mode === "horizontal" && item.align === "right" }')
 </template>
 
 <script>
