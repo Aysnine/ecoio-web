@@ -24,10 +24,17 @@ body
   &--vertical
     border-right none
     background-color transparent
+    .svg-icon
+      margin-right 1.5em
+      color inherit
     .el-menu-item
+    .el-submenu__title
+    .el-submenu__title .el-submenu__icon-arrow
       color #ffffffbf
     .el-menu-item:focus
     .el-menu-item:hover
+    .el-submenu__title:hover
+    .el-menu--inline
       background-color transparent
     .el-menu-item.is-active
       color #fff
@@ -38,12 +45,6 @@ body
     .el-menu-item:hover
     .el-menu-item.is-active
       background rgba(0,0,0,0.102)
-    .el-submenu__title
-    .el-submenu__title .el-submenu__icon-arrow
-      color #ffffffbf
-    .el-submenu__title:hover
-    .el-menu--inline
-      background-color transparent
   &--horizontal
     &::after
       display none

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-const requireAll = requireContext => requireContext.keys().map(requireContext)
-const req = require.context('./icons', false, /\.svg$/)
-const iconMap = requireAll(req)
+const iconMap = (r => r.keys().map(r))(
+  require.context('./icons', false, /\.svg$/)
+)
 
-Vue.prototype.$SvgIcons = iconMap.map(e => e.default.id.slice(3))
+Vue.prototype.$SvgIcons = iconMap.map(e => e.default.id.slice(5))
