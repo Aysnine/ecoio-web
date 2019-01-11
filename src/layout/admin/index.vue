@@ -7,9 +7,10 @@
             div.vh-100
               ghost-menu(:menu='menu', mode='vertical')
         el-container.vh-100
-          el-header(style='line-height: 58px;')
-            router-link(to='/')
-              img(src='@/assets/logo.png', height='30', style='vertical-align: middle; cursor: pointer')
+          el-header(style='line-height: 60px;')
+            router-link.f-l(to='/')
+              img.va-m(src='@/assets/logo.png', height='30')
+            power-breadcrumb.f-l.ml-10
             .f-r
               el-button(round) 退出登陆
                 i.el-icon-arrow-right.el-icon--right
