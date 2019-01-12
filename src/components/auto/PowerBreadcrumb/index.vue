@@ -44,24 +44,17 @@ export default {
   .no-redirect
     color #97a8be
     cursor text
-
 /*fade*/
-.power-breadcrumb-enter-active,
-.power-breadcrumb-leave-active {
-  transition: all .5s;
-}
-
-.power-breadcrumb-enter,
-.power-breadcrumb-leave-active {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.power-breadcrumb-move {
-  transition: all .5s;
-}
-
-.power-breadcrumb-leave-active {
-  position: absolute;
-}
+.power-breadcrumb
+  &-enter-active
+  &-leave-active
+    transition all .5s
+  &-enter
+  &-leave-active
+    opacity 0
+    transform translateX(20px)
+  &-move
+    transition all .5s
+  &-leave-active
+    position absolute
 </style>
