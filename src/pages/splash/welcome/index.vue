@@ -1,7 +1,9 @@
 <template lang="pug">
   .heroed
     .p-10
-      h1= process.env.VUE_APP_TITLE
+      h1(title=process.env.VUE_APP_TITLE)
+        img.va-b(src='@/assets/logo-w.png', height='26')
+        span.fw-s= process.env.VUE_APP_TITLE_BODY
     .p-10
       hero-carousel.hero-carousel
 </template>

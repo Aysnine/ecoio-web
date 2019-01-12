@@ -7,8 +7,7 @@
         el-scrollbar(ref='main-scrollbar')
           div(style='height: calc(100vh - 60px)')
             transition(name='el-fade-in', mode='out-in')
-              keep-alive
-                router-view
+              router-view
 </template>
 
 <script>
