@@ -1,5 +1,5 @@
 <template lang="pug">
-  .heroed.p-10(style='padding-top: 6em')
+  .heroed.p-10(style='padding-top: 4em')
     ghost-login-form.ma
       .ta-c(slot='prepend')
         h3.title
