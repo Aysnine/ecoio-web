@@ -1,6 +1,6 @@
 <template lang="pug">
   el-submenu(:index='item.path')
-    svg-icon.M(v-if='item.icon', :icon='item.icon')
+    svg-icon.M(v-if='item.icon', :icon='"m-" + item.icon')
     img(v-if='item.img', :src='"./assets/" + item.img', height='30')
     span(slot='title') {{ item.label }}
     template(v-for='child in item.children')

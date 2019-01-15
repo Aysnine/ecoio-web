@@ -5,7 +5,7 @@
         .box
           svg-icon.f-l(:icon='"quick-" + item.icon')
           .f-l
-            .fs-m.fw-b.ml-10.pl-5.pb-5.label {{ item.label }}
+            .fs-m.ml-10.pl-5.pb-5.label {{ item.label }}
             .fs-s.fw-b.ml-10.pl-5.pt-5.data(v-if='item.data instanceof Array')
               template(v-for='(i, index) in item.data')
                 span.sep.fw-s(v-if='index')  / 
@@ -35,7 +35,7 @@ export default {
   display inline-block
 .box
   background #fff
-  width 220px
+  width 240px
   border-radius 3px
   cursor pointer
   box-shadow rgba(163,142,183,0.08) 0px 2px 8px 0px
@@ -47,8 +47,16 @@ export default {
     font-size 3em
   .label
     color rgba(0,0,0,0.45)
+    max-width 170px
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
   .data
     color #666
+    max-width 170px
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
   .sep
     color #66b1ff
 </style>

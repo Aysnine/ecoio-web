@@ -13,7 +13,7 @@
             power-breadcrumb.f-l.ml-10
             .f-r
               el-button(round)
-                svg-icon.B.mr-5(icon='account')
+                svg-icon.B.mr-5(icon='m-account')
                 span ADMIN
               el-button(round) 退出登陆
                 i.el-icon-arrow-right.el-icon--right
