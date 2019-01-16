@@ -3,12 +3,16 @@
     el-aside.thin-bg-d(width='320px')
       el-scrollbar
         div(style='height: calc(100vh - 60px)')
-          info-blocks(:data='infos', :target='target')
+          info-blocks(:data='infos', v-model='target')
     el-main.pm-0
+      el-scrollbar
+        div(style='height: calc(100vh - 60px)')
+          weather-board(:data='targetInfo')
 </template>
 
 <script>
 import InfoBlocks from './components/InfoBlocks'
+import WeatherBoard from './components/WeatherBoard'
 
 export default {
   data() {
@@ -45,11 +49,17 @@ export default {
           ]
         }
       ],
-      target: '四川省 / 成都市 / 武侯区'
+      target: '四川省 / 自贡市 / 自流井区'
+    }
+  },
+  computed: {
+    targetInfo() {
+      return this.infos.find(i => i.label === this.target) || null
     }
   },
   components: {
-    InfoBlocks
+    InfoBlocks,
+    WeatherBoard
   }
 }
 </script>

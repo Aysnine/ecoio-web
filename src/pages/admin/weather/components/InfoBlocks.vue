@@ -1,8 +1,10 @@
 <template lang="pug">
   .p-10
+    .p-10
+      el-input.circled(placeholder='请输入搜索内容', prefix-icon='el-icon-search', v-model='search', clearable)
     template(v-for='item in data')
       .box-wrap.p-10
-        .box(:class='{ target: target && item.label === target }')
+        .box(:class='{ target: value && item.label === value }', @click='$emit("input", item.label)')
           svg-icon.logod.f-l(:icon='"wh-" + item.icon')
           .f-l
             .fs-es.fw-b.ml-10.pl-5.pb-5.pt-5.label {{ item.label }}
@@ -24,7 +26,6 @@
     .box-wrap.p-10
       .box.squared.ta-c.fs-es
         i.el-icon-plus.logod
-        span 更多
 </template>
 
 <script>
@@ -35,9 +36,14 @@ export default {
     data: {
       type: Array
     },
-    target: {
+    value: {
       type: String,
       required: false
+    }
+  },
+  data() {
+    return {
+      search: ''
     }
   },
   components: {
