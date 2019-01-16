@@ -5,9 +5,7 @@
         div(style='height: calc(100vh - 60px)')
           info-blocks(:data='infos', v-model='target')
     el-main.pm-0
-      el-scrollbar
-        div(style='height: calc(100vh - 60px)')
-          weather-board(:data='targetInfo')
+      weather-board(:data='targetInfo')
 </template>
 
 <script>
@@ -19,6 +17,7 @@ export default {
     return {
       infos: [
         {
+          id: '1',
           icon: '晴',
           label: '四川省 / 自贡市 / 自流井区',
           sep: '/',
@@ -29,6 +28,7 @@ export default {
           ]
         },
         {
+          id: '2',
           icon: '多云',
           label: '四川省 / 成都市 / 武侯区',
           sep: '/',
@@ -39,13 +39,36 @@ export default {
           ]
         },
         {
+          id: '3',
           icon: '大雪',
           label: '四川省 / 广元市 / 利州区',
           sep: '/',
           data: [
+            { value: -30, icon: 'airtemp', suffix: '°' },
+            { value: 20, icon: 'humidity', suffix: '%' },
+            { value: '5级 东南风', icon: 'speed' }
+          ]
+        },
+        {
+          id: '4',
+          icon: '小雪',
+          label: '北京市 / 北京城区 / 东城区',
+          sep: '/',
+          data: [
             { value: 20, icon: 'airtemp', suffix: '°' },
             { value: 20, icon: 'humidity', suffix: '%' },
-            { value: '3级 东南风', icon: 'speed' }
+            { value: '1级 北风', icon: 'speed' }
+          ]
+        },
+        {
+          id: '5',
+          icon: '小雪',
+          label: '内蒙古自治区 / 呼和浩特市 / 土默特左旗',
+          sep: '/',
+          data: [
+            { value: 20, icon: 'airtemp', suffix: '°' },
+            { value: 20, icon: 'humidity', suffix: '%' },
+            { value: '1级 北风', icon: 'speed' }
           ]
         }
       ],
