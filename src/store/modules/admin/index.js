@@ -12,10 +12,10 @@ export default {
       { label: '服务器', icon: 'system', path: '/admin/system' }
     ]
   },
-  mutation: {
+  mutations: {
     // ...
   },
-  action: {
+  actions: {
     // ...
   }
 }

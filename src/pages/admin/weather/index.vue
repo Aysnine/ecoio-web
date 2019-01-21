@@ -22,9 +22,9 @@ export default {
           label: '四川省 / 自贡市 / 自流井区',
           sep: '/',
           data: [
-            { value: 10, icon: 'airtemp', suffix: '°' },
-            { value: 20, icon: 'humidity', suffix: '%' },
-            { value: '3级 东南风', icon: 'speed' }
+            { label: '气温', value: 10, icon: 'airtemp', suffix: '°' },
+            { label: '湿度', value: 20, icon: 'humidity', suffix: '%' },
+            { label: '风力', value: '3级 东南风', icon: 'speed' }
           ]
         },
         {
@@ -33,9 +33,9 @@ export default {
           label: '四川省 / 成都市 / 武侯区',
           sep: '/',
           data: [
-            { value: 20, icon: 'airtemp', suffix: '°' },
-            { value: 20, icon: 'humidity', suffix: '%' },
-            { value: '3级 东南风', icon: 'speed' }
+            { label: '气温', value: 20, icon: 'airtemp', suffix: '°' },
+            { label: '湿度', value: 20, icon: 'humidity', suffix: '%' },
+            { label: '风力', value: '3级 东南风', icon: 'speed' }
           ]
         },
         {
@@ -44,9 +44,9 @@ export default {
           label: '四川省 / 广元市 / 利州区',
           sep: '/',
           data: [
-            { value: -30, icon: 'airtemp', suffix: '°' },
-            { value: 20, icon: 'humidity', suffix: '%' },
-            { value: '5级 东南风', icon: 'speed' }
+            { label: '气温', value: -30, icon: 'airtemp', suffix: '°' },
+            { label: '湿度', value: 20, icon: 'humidity', suffix: '%' },
+            { label: '风力', value: '5级 东南风', icon: 'speed' }
           ]
         },
         {
@@ -55,9 +55,9 @@ export default {
           label: '北京市 / 北京城区 / 东城区',
           sep: '/',
           data: [
-            { value: 20, icon: 'airtemp', suffix: '°' },
-            { value: 20, icon: 'humidity', suffix: '%' },
-            { value: '1级 北风', icon: 'speed' }
+            { label: '气温', value: 20, icon: 'airtemp', suffix: '°' },
+            { label: '湿度', value: 20, icon: 'humidity', suffix: '%' },
+            { label: '风力', value: '1级 北风', icon: 'speed' }
           ]
         },
         {
@@ -66,9 +66,9 @@ export default {
           label: '内蒙古自治区 / 呼和浩特市 / 土默特左旗',
           sep: '/',
           data: [
-            { value: 20, icon: 'airtemp', suffix: '°' },
-            { value: 20, icon: 'humidity', suffix: '%' },
-            { value: '1级 北风', icon: 'speed' }
+            { label: '气温', value: 20, icon: 'airtemp', suffix: '°' },
+            { label: '湿度', value: 20, icon: 'humidity', suffix: '%' },
+            { label: '风力', value: '1级 北风', icon: 'speed' }
           ]
         }
       ],
