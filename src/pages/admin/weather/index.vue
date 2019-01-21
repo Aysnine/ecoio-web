@@ -1,6 +1,6 @@
 <template lang="pug">
   el-container(style='height: calc(100vh - 60px);')
-    el-aside.thin-bg-d(width='320px')
+    el-aside.thin-bg-g(width='320px')
       el-scrollbar
         div(style='height: calc(100vh - 60px)')
           info-blocks(:data='infos', v-model='target')
