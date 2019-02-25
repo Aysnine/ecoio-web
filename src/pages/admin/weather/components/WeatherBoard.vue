@@ -1,7 +1,7 @@
 <template lang="pug">
   el-scrollbar
     div(style='height: calc(100vh - 60px)')
-      el-row.pb-20
+      el-row
         el-col(:md='24', :lg='12')
           .p-10
             .p-10.pv-20.fs-ees(style='color: #a9aece82')
@@ -10,9 +10,9 @@
               i.el-icon-location.mr-5
               transition(name='power-switch', mode='out-in')
                 span(:key='data.label') {{ data.label }}
-            .line
+            .line.ml-10
             .p-10
-              .fs-es.data(v-if='data.data instanceof Array')
+              .fs-es.data(v-if='isArray(data.data)')
                 template(v-for='i in data.data')
                   count-to(v-if='typeof i === "number"', :start-val='0', :end-val='i', :duration='3000', :decimals='0', autoplay, separator='')
                   template(v-if='typeof i === "object" && typeof i.value === "number"')
@@ -30,7 +30,7 @@
               .fs-es.ml-10.pl-5.pt-3.data(v-if='typeof data.data === "string"')
                 span {{ data.data }}
         el-col(:md='24', :lg='12')
-          .p-20.f-r
+          .p-20.pt-20.f-r
             el-card.hero-block.we-card(shadow='never')
                 transition(name='el-fade-in', mode='out-in')
                   .p-20.ta-c(:key='data.label')
@@ -40,8 +40,8 @@
                         .fs-ees.p-10 {{ data.icon }}
                       .wow.f-l.fw-s {{ data.data[0].value }}°
                       .f-c
-      .p-20
-        ul.grid-wrap
+      .ph-20
+        ul.m-0.grid-wrap
           li(v-for='i in 6')
             i.el-icon-star-off
     .abf(v-if='error')
@@ -98,6 +98,9 @@ export default {
         // console.log('done', weatherId)
         this.loading = false
       }
+    },
+    isArray(o) {
+      return o instanceof Array
     }
   },
   components: {

@@ -8,7 +8,7 @@
           svg-icon.logod.f-l(:icon='"wh-" + item.icon')
           .f-l
             .fs-es.fw-b.ml-10.pl-5.pb-5.pt-5.label {{ item.label }}
-            .fs-es.ml-10.pl-5.pt-3.data(v-if='item.data instanceof Array')
+            .fs-es.ml-10.pl-5.pt-3.data(v-if='isArray(item.data)')
               template(v-for='(i, index) in item.data')
                 span.sep.fw-s(v-if='index') /
                 count-to(v-if='typeof i === "number"', :start-val='0', :end-val='i', :duration='3000', :decimals='0', autoplay, separator='')
@@ -66,6 +66,11 @@ export default {
             keys: ['label', 'icon', 'data.value']
           }).search(this.search)
         : this.data
+    }
+  },
+  methods: {
+    isArray(o) {
+      return o instanceof Array
     }
   },
   components: {
