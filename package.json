@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "dayjs": "^1.7.8",
+    "dayjs": "^1.8.8",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.11",
     "fuse.js": "^3.3.0",

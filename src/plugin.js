@@ -6,6 +6,7 @@ import './lib/main/pwa/registerServiceWorker'
 /* Base plugin */
 import $cookie from '@/lib/main/$cookie'
 import $log from '@/lib/main/$log'
+import $tm from 'dayjs'
 
 const plugin = {
   // for other use
@@ -14,11 +15,13 @@ const plugin = {
     process.env.VUE_APP_MAIN_COOKIE_VERSION || ''
   ),
   $log,
+  $tm,
 
   // for vue plugin
   install(Vue) {
     Vue.prototype.$cookie = this.$cookie
     Vue.prototype.$log = this.$log
+    Vue.prototype.$tm = this.$tm
   }
 }
 
