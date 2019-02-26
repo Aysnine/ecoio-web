@@ -6,7 +6,7 @@
           svg-icon.f-l(:icon='"quick-" + item.icon')
           .f-l
             .fs-m.ml-10.pl-5.pb-5.label {{ item.label }}
-            .fs-s.fw-b.ml-10.pl-5.pt-5.data(v-if='item.data instanceof Array')
+            .fs-s.fw-b.ml-10.pl-5.pt-5.data(v-if='isArray(item.data)')
               template(v-for='(i, index) in item.data')
                 span.sep.fw-s(v-if='index')  / 
                 count-to(:start-val='0', :end-val='i', :duration='2000', :decimals='0', autoplay, separator='')
@@ -22,6 +22,11 @@ export default {
   props: {
     data: {
       type: Array
+    }
+  },
+  methods: {
+    isArray(o) {
+      return o instanceof Array
     }
   },
   components: {
