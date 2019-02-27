@@ -14,6 +14,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './style/index.styl'
 
 Vue.config.productionTip = false
+Vue.prototype.$env__preview = process.env.VUE_APP_PREVIEW === 'on'
 
 new Vue({
   router,
