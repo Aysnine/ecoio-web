@@ -2,7 +2,7 @@
   ve-gauge(
     :data='chartData',
     :settings='chartSettings',
-    :tooltip-visible='false'
+    :tooltip-visible='false',
     :height='height'
   )
 </template>
@@ -36,7 +36,7 @@ export default {
       seriesMap: {
         label: {
           center: ['50%', '55%'],
-          radius: '70%',
+          radius: '80%',
           min: 0,
           max: 1,
           axisLine: {
@@ -47,12 +47,6 @@ export default {
               shadowBlur: 10
             }
           },
-          // axisLabel: {
-          //   textStyle: {
-          //     fontWeight: 'bolder',
-          //     color: '#97a8be'
-          //   }
-          // },
           axisTick: {
             length: 7,
             lineStyle: {
@@ -73,14 +67,16 @@ export default {
           title: {
             color: '#97a8be',
             fontWeight: '100',
-            fontSize: 20,
-            fontStyle: 'italic'
+            fontSize: 15
           }
         }
       }
     }
-    return {
-      chartData: {
+    return {}
+  },
+  computed: {
+    chartData() {
+      return {
         columns: ['type', 'value'],
         rows: [{ type: 'label', value: this.value }]
       }

@@ -40,21 +40,6 @@ export default {
       default: '#2789c1'
     }
   },
-  mounted() {
-    // push data
-    let dt = this.$tm('2018-01-07')
-    setInterval(() => {
-      dt = dt.add(1, 'day')
-      let row = {
-        t: dt.format('YYYY-MM-DD'),
-        v: this.chartData.rows.length ? ~~(Math.random() * 30) : 0
-      }
-      if (this.chartData.rows.length > this.limit) {
-        this.chartData.rows.shift()
-      }
-      this.chartData.rows.push(row)
-    }, 500)
-  },
   data() {
     // config
     const colors = [this.color]
@@ -120,7 +105,7 @@ export default {
     return {
       chartData: {
         columns: ['t', 'v'],
-        rows: []
+        rows: [{ t: 0, v: 0 }]
       }
     }
   },
@@ -135,6 +120,15 @@ export default {
         startValue: this.chartData.rows.length - this.limit,
         endValue: this.chartData.rows.length - 1
       }
+    }
+  },
+  methods: {
+    push(t, v) {
+      let row = { t, v }
+      if (this.chartData.rows.length > this.limit) {
+        this.chartData.rows.shift()
+      }
+      this.chartData.rows.push(row)
     }
   },
   components: {
