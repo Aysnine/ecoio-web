@@ -14,7 +14,7 @@ export default {
       try {
         return { hello: 'world' }
       } catch (error) {
-        // throw error
+        throw error
       }
     }
   }

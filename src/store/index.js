@@ -5,7 +5,13 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   /* Root */
-  state: {},
+  getters: {
+    user: state => state.user,
+    userRole: state => (state.user ? state.user.role : null)
+  },
+  state: {
+    user: null
+  },
   mutations: {},
   actions: {}
 })

@@ -3,7 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+if (process.env.VUE_APP_PREVIEW === 'on') {
+  require('@/mock')
+}
+
 import './plugin'
+import './router/witch'
 import './components'
 
 import ElementUI from 'element-ui'
