@@ -1,5 +1,6 @@
 import low from 'lowdb'
 import LocalStorage from 'lowdb/adapters/LocalStorage'
+import dict from '@/dict'
 const db = low(new LocalStorage('mock-default-db'))
 
 db.defaults({
@@ -19,7 +20,7 @@ db.defaults({
       role: 'manager'
     }
   ],
-  roles: [{ id: 'admin', name: '管理员' }, { id: 'member', name: '用户成员' }]
+  ...dict()
 }).write()
 
 export default db

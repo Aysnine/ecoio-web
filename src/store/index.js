@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import dict from '@/dict'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,8 @@ const store = new Vuex.Store({
     userRole: state => (state.user ? state.user.role : null)
   },
   state: {
-    user: null
+    user: null,
+    ...dict()
   },
   mutations: {},
   actions: {}
