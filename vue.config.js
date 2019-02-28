@@ -1,6 +1,9 @@
 const resolve = dir => require('path').join(__dirname, dir)
 
 module.exports = {
+  devServer: {
+    publicPath: process.env.VUE_APP_API || '/',
+  },
   productionSourceMap: process.env.VUE_APP_SOURCE_MAP !== 'off',
   css: {
     loaderOptions: {
