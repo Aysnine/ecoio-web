@@ -15,6 +15,7 @@
     "fuse.js": "^3.3.0",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.11",
+    "micromatch": "^3.1.10",
     "nib": "^1.1.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
