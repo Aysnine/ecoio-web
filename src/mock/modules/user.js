@@ -1,26 +1,26 @@
 export default [
   {
-    path: /\/user\/login.*/,
+    path: '/user/login',
     method: 'post',
-    handle({ db, body, Random }) {
+    handle({ body: { account, pass }, db, uid }) {
       let isAuth = db
         .get('users')
-        .find({ account: body.account, pass: body.pass })
+        .find({ account, pass })
         .value()
-      let token = Random.guid()
+      let newToken = uid()
       if (isAuth) {
         db.get('users')
-          .find({ account: body.account })
-          .assign({ token })
+          .find({ account })
+          .assign({ token: newToken })
           .write()
       }
       return isAuth
-        ? { code: 0, msg: '登陆成功', token }
+        ? { code: 0, msg: '登陆成功', token: newToken }
         : { code: 1, msg: '登陆失败，请检查用户名或密码' }
     }
   },
   {
-    path: /\/user\/logout.*/,
+    path: '/user/logout',
     method: 'post',
     handle() {
       return {
@@ -30,10 +30,9 @@ export default [
     }
   },
   {
-    path: /\/user\/profile.*/,
-    method: 'post',
-    handle({ body, db }) {
-      let { token } = body
+    path: '/user/profile',
+    method: 'get',
+    handle({ body: { token }, db }) {
       let user = db
         .get('users')
         .find({ token })
@@ -49,21 +48,6 @@ export default [
             code: 1,
             msg: '登陆过期，请重新登陆'
           }
-    }
-  },
-  {
-    path: /\/user\/roles.*/,
-    method: 'get',
-    handle({ db }) {
-      return {
-        code: 0,
-        data: {
-          roles: db
-            .get('roles')
-            .cloneDeep()
-            .value()
-        }
-      }
     }
   }
 ]

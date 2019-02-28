@@ -75,12 +75,12 @@ const E = (prop, template) => {
   obj[prop] = [template]
   return Mock.mock(obj)
 }
-const RR = (num, itemTemplate) => {
+const R = (num, itemTemplate) => {
   return E('data' + '|' + num, itemTemplate).data
 }
 
 const CustomExtends = {
-  RR,
+  R,
   Mock,
   Random: Mock.Random
 }
