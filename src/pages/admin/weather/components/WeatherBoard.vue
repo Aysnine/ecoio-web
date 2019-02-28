@@ -40,7 +40,7 @@
                         .fs-ees.p-10 {{ data.icon }}
                       .wow.f-l.fw-s {{ data.data[0].value }}°
                       .f-c
-      .ph-20
+      .ph-20(v-if='!(error || loading)')
         ul.m-0.grid-wrap
           li(v-for='i in 6')
             i.el-icon-star-off
