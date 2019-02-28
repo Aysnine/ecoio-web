@@ -20,5 +20,8 @@ const routes = [
 ]
 
 export default new Router({
+  // mode: 'history', // ! 需要结合后端使用
+  mode: 'hash',
+  base: process.env.BASE_URL,
   routes
 })
