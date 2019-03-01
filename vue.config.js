@@ -1,6 +1,7 @@
 const resolve = dir => require('path').join(__dirname, dir)
 
 module.exports = {
+  publicPath: process.env.BASE_URL,
   devServer: {
     publicPath: process.env.VUE_APP_API || '/'
   },
