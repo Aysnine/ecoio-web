@@ -5,7 +5,7 @@ import layzer from '@/lib/util/layzer.js'
 
 export default function ({ start, done }) {
 
-  const { push, pop } = layzer({ start, done, smooth: 1000 })
+  const { push, pop } = layzer({ start, done, smooth: 600 })
 
   const service = axios.create({
     baseURL: process.env.VUE_APP_API,

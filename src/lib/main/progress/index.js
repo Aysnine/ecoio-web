@@ -8,11 +8,12 @@ export default function() {
   const { pop, push } = layzer({
     start() {
       NProgress.start()
+      NProgress.set(0.2)
     },
     done() {
       NProgress.done()
     },
-    smooth: 1000
+    smooth: 600
   })
 
   return {
