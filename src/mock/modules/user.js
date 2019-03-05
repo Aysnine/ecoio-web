@@ -38,6 +38,7 @@ export default [
         .find({ token })
         .cloneDeep()
         .value()
+      delete user.pass
       return user
         ? {
             code: 0,
