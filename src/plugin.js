@@ -14,19 +14,23 @@ export const $request = $Request({
   done: $progress.done
 })
 
-/* Base plugin */
+/* Global Cookie storager */
 import $Cookie from '@/lib/main/$cookie'
 export const $cookie = $Cookie(
   process.env.VUE_APP_MAIN_COOKIE_DOMAIN || '',
   process.env.VUE_APP_MAIN_COOKIE_VERSION || ''
 )
+
+/* Global logger (console) */
 import $Log from '@/lib/main/$log'
 export const $log = $Log
+
+/* Global time lib (dayjs) */
 import $Tm from 'dayjs'
 export const $tm = $Tm
 
+/* For vue instance */
 Vue.use({
-  // for vue instance
   install(Vue) {
     Vue.prototype.$cookie = $cookie
     Vue.prototype.$log = $log
@@ -36,7 +40,7 @@ Vue.use({
   }
 })
 
-// For public
+/* For public */
 export default {
   $cookie,
   $log,
