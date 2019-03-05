@@ -17,7 +17,7 @@ export const $request = $Request({
 /* Global Cookie storager */
 import $Cookie from '@/lib/main/$cookie'
 export const $cookie = $Cookie(
-  process.env.VUE_APP_MAIN_COOKIE_DOMAIN || '',
+  process.env.VUE_APP_MAIN_DOMAIN || '',
   process.env.VUE_APP_MAIN_COOKIE_VERSION || ''
 )
 
