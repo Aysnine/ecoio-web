@@ -11,11 +11,12 @@ export default {
   },
   actions: {
     async fetchWeatherInfo() {
-      try {
-        return { hello: 'world' }
-      } catch (error) {
-        throw error
-      }
+      // try {
+      //   return { hello: 'world' }
+      // } catch (error) {
+      //   throw error
+      // }
+      return { hello: 'world' }
     }
   }
 }
