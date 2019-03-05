@@ -10,7 +10,7 @@ export default function({ start, done, smooth }) {
       if (count) count--
       if (instance && !count) {
         setTimeout(() => {
-          if (instance && !count) instance = done(instance) || true
+          if (instance && !count) instance = done(instance) || null
         }, smooth)
       }
     }
