@@ -1,10 +1,9 @@
 import WitchSuit from '@/lib/main/witch-suit'
-import Plugins from '@/plugin'
+import { $cookie, $progress } from '@/plugin'
 import router from '@/router'
 import store from '@/store'
 import { Message } from 'element-ui'
 
-const { $cookie, $progress } = Plugins
 const witch = WitchSuit(router)
 
 witch.rules([

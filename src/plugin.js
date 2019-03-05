@@ -1,42 +1,46 @@
 import Vue from 'vue'
 
-/* Global pregress bar */
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-NProgress.configure({ showSpinner: false })
-
-/* Global request lib */
-import request from './lib/main/el-request'
-
 /* PWA support */
-import './lib/main/pwa/registerServiceWorker'
+import '@/lib/main/pwa/registerServiceWorker'
+
+/* Global pregress */
+import $Progress from '@/lib/main/progress'
+export const $progress = $Progress()
+
+/* Global request */
+import $Request from '@/lib/main/$request'
+export const $request = $Request({
+  start: $progress.start,
+  done: $progress.done
+})
 
 /* Base plugin */
-import $cookie from '@/lib/main/$cookie'
-import $log from '@/lib/main/$log'
-import $tm from 'dayjs'
+import $Cookie from '@/lib/main/$cookie'
+export const $cookie = $Cookie(
+  process.env.VUE_APP_MAIN_COOKIE_DOMAIN || '',
+  process.env.VUE_APP_MAIN_COOKIE_VERSION || ''
+)
+import $Log from '@/lib/main/$log'
+export const $log = $Log
+import $Tm from 'dayjs'
+export const $tm = $Tm
 
-const plugin = {
-  // for other use
-  $cookie: $cookie(
-    process.env.VUE_APP_MAIN_COOKIE_DOMAIN || '',
-    process.env.VUE_APP_MAIN_COOKIE_VERSION || ''
-  ),
+Vue.use({
+  // for vue instance
+  install(Vue) {
+    Vue.prototype.$cookie = $cookie
+    Vue.prototype.$log = $log
+    Vue.prototype.$tm = $tm
+    Vue.prototype.$progress = $progress
+    Vue.prototype.$request = $request
+  }
+})
+
+// For public
+export default {
+  $cookie,
   $log,
   $tm,
-  $progress: NProgress,
-  $request: request({ start: NProgress.start, done: NProgress.done }),
-
-  // for vue plugin
-  install(Vue) {
-    Vue.prototype.$cookie = this.$cookie
-    Vue.prototype.$log = this.$log
-    Vue.prototype.$tm = this.$tm
-    Vue.prototype.$progress = this.$progress
-    Vue.prototype.$request = this.$request
-  }
+  $progress,
+  $request
 }
-
-Vue.use(plugin)
-
-export default plugin

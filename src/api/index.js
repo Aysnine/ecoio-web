@@ -1,7 +1,5 @@
 import qs from 'qs'
-import Plugin from '@/plugin'
-const { $request } = Plugin
-const req = $request
+import { $request as req } from '@/plugin'
 
 export const userLogin = ({ account, pass }) =>
   req({

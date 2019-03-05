@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import dict from '@/dict'
-import Plugin from '@/plugin'
-const { $cookie } = Plugin
+import { $cookie } from '@/plugin'
 import { userLogin, userLogout, userProfile } from '@/api'
 
 Vue.use(Vuex)
