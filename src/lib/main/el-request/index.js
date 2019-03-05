@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { Loading } from 'element-ui'
 import axios from 'axios'
 import log from './sao-log.js'
 
@@ -9,15 +8,8 @@ const service = axios.create({
 })
 
 const smoothness = 600
-const startLoading = () =>
-  Loading.service({
-    fullscreen: true,
-    lock: false,
-    text: '请稍后 _(:3」∠)_ 。。。',
-    spinner: 'el-icon-loading',
-    background: 'rgba(0, 0, 0, 0.7)'
-  })
-const StopLoading = instance => (instance.close(), null)
+let startLoading = () => {}
+let StopLoading = () => {}
 
 const { push, pop } = (function() {
   let count = 0
@@ -70,4 +62,8 @@ service.interceptors.response.use(
   }
 )
 
-export default service
+export default function ({ start, done }) {
+  startLoading = start || (() => {})
+  StopLoading = done || (() => {})
+  return service
+}

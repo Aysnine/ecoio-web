@@ -1,5 +1,7 @@
 import qs from 'qs'
-import req from '@/lib/main/el-request'
+import Plugin from '@/plugin'
+const { $request } = Plugin
+const req = $request
 
 export const userLogin = ({ account, pass }) =>
   req({

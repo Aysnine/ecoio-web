@@ -3,12 +3,8 @@ import Plugins from '@/plugin'
 import router from '@/router'
 import store from '@/store'
 import { Message } from 'element-ui'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 
-NProgress.configure({ showSpinner: false })
-
-const { $cookie } = Plugins
+const { $cookie, $progress } = Plugins
 const witch = WitchSuit(router)
 
 witch.rules([
@@ -45,11 +41,11 @@ witch.rules([
 ])
 
 witch.before(() => {
-  NProgress.start()
+  $progress.start()
 })
 
 witch.after(() => {
-  NProgress.done()
+  $progress.done()
 })
 
 export default witch

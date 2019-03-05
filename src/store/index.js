@@ -34,9 +34,11 @@ const store = new Vuex.Store({
         commit('SET_TOKEN', token)
         try {
           await dispatch('userProfile')
+          return false
         } catch (error) {
           $cookie.remove('token')
           commit('SET_TOKEN', null)
+          return true
         }
       }
     },

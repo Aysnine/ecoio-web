@@ -8,8 +8,9 @@
 import { mapActions } from 'vuex'
 
 export default {
-  mounted() {
-    this.init()
+  async mounted() {
+    const needReload = await this.init()
+    if (needReload) location.reload()
   },
   methods: {
     ...mapActions(['init'])
