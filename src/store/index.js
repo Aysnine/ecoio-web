@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import dict from '@/dict'
+import Plugin from '@/plugin'
+const { $cookie } = Plugin
+import { userLogin, userLogout, userProfile } from '@/api'
 
 Vue.use(Vuex)
 
@@ -8,14 +11,64 @@ const store = new Vuex.Store({
   /* Root */
   getters: {
     user: state => state.user,
-    userRole: state => (state.user ? state.user.role : null)
+    userRole: state => (state.user ? state.user.role : null),
+    token: state => state.token
   },
   state: {
     user: null,
+    token: null,
     ...dict()
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    SET_TOKEN: (state, value) => {
+      state.token = value
+    },
+    SET_USER: (state, value) => {
+      state.user = value
+    }
+  },
+  actions: {
+    async init({ commit, dispatch }) {
+      const token = $cookie.get('token') || null
+      if (token) {
+        commit('SET_TOKEN', token)
+        try {
+          await dispatch('userProfile')
+        } catch (error) {
+          $cookie.remove('token')
+          commit('SET_TOKEN', null)
+        }
+      }
+    },
+    async userLogin({ commit, dispatch }, { account, pass }) {
+      try {
+        const { token } = await userLogin({ account, pass })
+        $cookie.set('token', token)
+        commit('SET_TOKEN', token)
+        await dispatch('userProfile')
+      } catch (error) {
+        throw error
+      }
+    },
+    async userProfile({ getters: { token }, commit }) {
+      try {
+        const { data } = await userProfile(token)
+        commit('SET_USER', data)
+      } catch (error) {
+        throw error
+      }
+    },
+    async userLogout({ getters: { token }, commit }) {
+      try {
+        await userLogout(token)
+        $cookie.remove('token')
+        commit('SET_TOKEN', null)
+        commit('SET_USER', null)
+      } catch (error) {
+        throw error
+      }
+    }
+  }
 })
 
 /**

@@ -1,6 +1,6 @@
 <template lang="pug">
   .heroed.p-10(style='padding-top: 4em')
-    ghost-login-form.ma
+    ghost-login-form.ma(:handleLogin='handleLogin')
       .ta-c(slot='prepend')
         h3.title
           img.va-b(src='@/assets/logo-w.png', height='22')
@@ -13,11 +13,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   methods: {
     handleLink() {
       this.$router.push({ name: 'SplashRegist' })
-    }
+    },
+    async handleLogin({ account, pass }) {
+      try {
+        await this.userLogin({ account, pass })
+        this.$router.push({ path: '/admin' })
+      } catch (error) {
+        // throw error
+      }
+    },
+    ...mapActions(['userLogin'])
   }
 }
 </script>

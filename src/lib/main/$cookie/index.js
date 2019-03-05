@@ -1,7 +1,7 @@
 /* eslint-disable */
 import Cookies from 'js-cookie'
 
-export default function (domain, version) {
+export default function(domain, version) {
   return {
     set(name = 'default', value = '', cookieSetting = {}) {
       let currentCookieSetting = { expires: 1 }

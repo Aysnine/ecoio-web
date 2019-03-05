@@ -31,7 +31,7 @@ export default [
   },
   {
     path: '/user/profile',
-    method: 'get',
+    method: 'post',
     handle({ body: { token }, db }) {
       let user = db
         .get('users')
