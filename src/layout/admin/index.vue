@@ -15,7 +15,7 @@
               el-button(round)
                 svg-icon.B.mr-5(icon='m-account')
                 span ADMIN
-              el-button(round) 退出登陆
+              el-button(round, @click='handleLogout') 退出登陆
                 i.el-icon-arrow-right.el-icon--right
           el-main.pm-0.vh-100.thin-bg
             el-scrollbar.hero-shadow-top(ref='main-scrollbar')
@@ -26,9 +26,32 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  methods: {
+    ...mapActions(['userLogout']),
+    async handleLogout() {
+      try {
+        await this.$confirm('确认退出登陆?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        })
+        try {
+          await this.userLogout()
+          this.$router.push('/login')
+        } catch (error) {
+          this.$message({
+            type: 'error',
+            message: error.msg
+          })
+        }
+      } catch {
+        // cancel
+      }
+    }
+  },
   computed: {
     ...mapGetters('admin', ['menu'])
   }
