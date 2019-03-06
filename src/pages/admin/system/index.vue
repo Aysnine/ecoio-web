@@ -29,7 +29,7 @@ export default {
   mounted() {
     if (this.$env__preview) {
       let dt = this.$tm()
-      setInterval(() => {
+      this.$options.preview_interval_timer = setInterval(() => {
         dt = dt.add(1, 'second')
         let cpu = 20 + ~~(Math.random() * 20)
         let mem = 40 + ~~(Math.random() * 10)
@@ -44,6 +44,12 @@ export default {
         let disk = 60 + ~~(Math.random() * 2)
         this.diskLast = disk
       }, 1000)
+    }
+  },
+  beforeDestroy() {
+    if (this.$env__preview) {
+      if (this.$options.preview_interval_timer)
+        clearInterval(this.$options.preview_interval_timer)
     }
   },
   data() {
