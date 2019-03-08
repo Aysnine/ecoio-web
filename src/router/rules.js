@@ -1,19 +1,18 @@
-import WitchSuit from '@/lib/main/witch-suit'
-import { $cookie, $progress } from '@/plugin'
-import router from '@/router'
 import store from '@/store'
+import { $cookie } from '@/plugin'
 import { Message } from 'element-ui'
 
-const witch = WitchSuit(router)
-
-witch.rules([
-  /* base */
+export default [
+  /* login status control */
 
   {
     match: '/login',
-    validator() {
-      return !!$cookie.get('token')
-    },
+    validator: () => !!$cookie.get('token'),
+    reactor: '/404'
+  },
+  {
+    match: '/regist',
+    validator: () => !!$cookie.get('token'),
     reactor: '/404'
   },
   {
@@ -27,7 +26,7 @@ witch.rules([
     }
   },
 
-  /* role control */
+  /* meta role control */
 
   {
     match: '/admin/**',
@@ -37,14 +36,4 @@ witch.rules([
     },
     reactor: '/404'
   }
-])
-
-witch.before(() => {
-  $progress.start()
-})
-
-witch.after(() => {
-  $progress.done()
-})
-
-export default witch
+]

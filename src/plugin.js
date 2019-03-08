@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import router from '@/router'
 
 /* PWA support */
 import '@/lib/main/pwa/registerServiceWorker'
@@ -9,6 +10,7 @@ export const $progress = $Progress()
 
 /* Global request */
 import $Request from '@/lib/main/$request'
+// show progress
 export const $request = $Request({
   start: $progress.start,
   done: $progress.done
@@ -29,6 +31,14 @@ export const $log = $Log
 import $Tm from 'dayjs'
 export const $tm = $Tm
 
+/* Global router witch */
+import $Witch from '@/lib/main/witch-suit'
+import rules from '@/router/rules'
+export const $witch = $Witch(router).rules(rules)
+// show progress
+$witch.before(() => $progress.start())
+$witch.after(() => $progress.done())
+
 /* For vue instance */
 Vue.use({
   install(Vue) {
@@ -37,6 +47,7 @@ Vue.use({
     Vue.prototype.$tm = $tm
     Vue.prototype.$progress = $progress
     Vue.prototype.$request = $request
+    Vue.prototype.$witch = $witch
   }
 })
 
@@ -46,5 +57,6 @@ export default {
   $log,
   $tm,
   $progress,
-  $request
+  $request,
+  $witch
 }

@@ -8,7 +8,6 @@ if (process.env.VUE_APP_PREVIEW === 'on') {
 }
 
 import './plugin'
-import './router/witch'
 import './components'
 
 import ElementUI from 'element-ui'

@@ -7,9 +7,15 @@ export default function(router) {
     after() {}
   }
 
-  const rules = list => (config.rules = list)
-  const before = func => (config.before = func)
-  const after = func => (config.after = func)
+  const result = {}
+
+  const rules = list => ((config.rules = list), result)
+  const before = func => ((config.before = func), result)
+  const after = func => ((config.after = func), result)
+
+  result.rules = rules
+  result.before = before
+  result.after = after
 
   router.beforeEach((to, from, next) => {
     config.before({ to, from, next })
@@ -33,9 +39,5 @@ export default function(router) {
     config.after()
   })
 
-  return {
-    rules,
-    before,
-    after
-  }
+  return result
 }
