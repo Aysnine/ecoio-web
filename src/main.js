@@ -20,6 +20,10 @@ import './style/index.styl'
 
 Vue.config.productionTip = false
 Vue.prototype.$env__preview = process.env.VUE_APP_PREVIEW === 'on'
+Vue.prototype.$sleep = ms =>
+  new Promise(y => {
+    setTimeout(() => y(), ms)
+  })
 
 new Vue({
   router,
