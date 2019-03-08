@@ -20,10 +20,10 @@ db.defaults({
     },
     {
       id: '2',
-      account: 'manager',
-      nickname: 'manager',
-      pass: 'manager',
-      role: 'manager'
+      account: 'member',
+      nickname: 'member',
+      pass: 'member',
+      role: 'member'
     }
   ],
   ...dict()
