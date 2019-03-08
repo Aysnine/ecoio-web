@@ -25,7 +25,7 @@ export default {
         await this.userLogin({ account, pass })
         this.$router.push({ path: '/admin' })
       } catch (error) {
-        // throw error
+        this.$message.error(error.msg)
       }
     },
     ...mapActions(['userLogin'])
