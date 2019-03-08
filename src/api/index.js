@@ -1,6 +1,13 @@
 import qs from 'qs'
 import { $request as req } from '@/plugin'
 
+export const userRegist = ({ account, nickname, pass }) =>
+  req({
+    method: 'post',
+    url: '/user/regist',
+    data: qs.stringify({ account, nickname, pass })
+  })
+
 export const userLogin = ({ account, pass }) =>
   req({
     method: 'post',

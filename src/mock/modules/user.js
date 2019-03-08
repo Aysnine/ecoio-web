@@ -1,5 +1,23 @@
 export default [
   {
+    path: '/user/regist',
+    method: 'post',
+    handle({ body: { account, nickname, pass }, db, uid }) {
+      let isExist = db
+        .get('users')
+        .find({ account })
+        .value()
+      if (!isExist) {
+        db.get('users')
+          .push({ id: uid(), account, nickname, pass, role: 'member' })
+          .write()
+      }
+      return isExist
+        ? { code: 1, msg: '登陆失败，该账号已存在！' }
+        : { code: 0, msg: '注册成功，请登陆！' }
+    }
+  },
+  {
     path: '/user/login',
     method: 'post',
     handle({ body: { account, pass }, db, uid }) {

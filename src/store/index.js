@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import dict from '@/dict'
 import { $cookie } from '@/plugin'
-import { userLogin, userLogout, userProfile } from '@/api'
+import { userRegist, userLogin, userLogout, userProfile } from '@/api'
 
 Vue.use(Vuex)
 
@@ -39,6 +39,14 @@ const store = new Vuex.Store({
           commit('SET_TOKEN', null)
           return true
         }
+      }
+    },
+    async userRegist(_, { account, nickname, pass }) {
+      try {
+        const rst = await userRegist({ account, nickname, pass })
+        return rst
+      } catch (error) {
+        throw error
       }
     },
     async userLogin({ commit, dispatch }, { account, pass }) {
