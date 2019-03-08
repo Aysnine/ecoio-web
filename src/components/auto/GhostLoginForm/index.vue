@@ -21,7 +21,10 @@ export default {
     }
   },
   mounted() {
-    if (this.$env__preview) {
+    if (this.$route.params.account) {
+      this.form.account = this.$route.params.account
+      this.form.pass = this.$route.params.pass || ''
+    } else if (this.$env__preview) {
       this.form.account = 'admin'
       this.form.pass = 'admin'
     }
