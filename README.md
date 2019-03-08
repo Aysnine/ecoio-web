@@ -15,6 +15,11 @@ yarn run serve
 yarn run build
 ```
 
+### Compiles and minifies for preview (without server)
+```
+yarn run build:preview
+```
+
 ### Run your tests
 ```
 yarn run test
