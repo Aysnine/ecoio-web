@@ -19,6 +19,7 @@
     "lowdb": "^1.0.0",
     "micromatch": "^3.1.10",
     "mockjs": "^1.0.1-beta3",
+    "mqtt": "^2.18.8",
     "nib": "^1.1.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
