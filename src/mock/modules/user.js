@@ -13,7 +13,7 @@ export default [
           .write()
       }
       return isExist
-        ? { code: 1, msg: '登陆失败，该账号已存在！' }
+        ? { code: 1, msg: '注册失败，该账号已存在！' }
         : { code: 0, msg: '注册成功，请登陆！' }
     }
   },
