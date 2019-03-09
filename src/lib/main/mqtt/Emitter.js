@@ -1,6 +1,29 @@
 export default new class {
   constructor() {
+    this.prefix = ''
+    this.alias = {}
     this.listeners = new Map()
+  }
+
+  addAlias(label, path) {
+    this.alias[label] = path
+  }
+
+  setPrefix(string) {
+    this.prefix = string
+  }
+
+  aliasConvert(input) {
+    // console.log('user', this.alias.user)
+    const rst = (input.match(/\$\w+/g) || [])
+      .map(i => i.slice(1))
+      .sort((b, a) => a.length - b - length)
+      .reduce(
+        (x, key) =>
+          this.alias[key] ? x.replace('$' + key, this.alias[key]) : x,
+        input
+      )
+    return this.prefix ? rst.replace(/^@/, this.prefix) : rst
   }
 
   addListener(label, callback, vm) {
@@ -36,7 +59,8 @@ export default new class {
 
   emit(label, ...args) {
     let ret = false
-    this.listeners.forEach((listeners, key) => {
+    this.listeners.forEach((listeners, aliasKey) => {
+      const key = this.aliasConvert(aliasKey)
       if (this.eq(label, key) && listeners && listeners.length) {
         listeners.forEach(listener => {
           listener.callback.call(listener.vm, ...args, label)

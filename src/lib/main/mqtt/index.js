@@ -2,12 +2,16 @@ import Observer from './Observer'
 import Emitter from './Emitter'
 
 export default {
-  install(Vue, connection, options) {
+  install(Vue, connection, options, prefix) {
     if (!connection) throw new Error('[Vue-Mqtt] cannot locate connection')
 
     let observer = new Observer(connection, options)
 
+    prefix && Emitter.setPrefix(prefix)
     Vue.prototype.$mqtt = observer.Mqtt
+    Vue.prototype.$mqtt.alias = (label, path) => {
+      Emitter.addAlias(label, path)
+    }
 
     Vue.mixin({
       created() {

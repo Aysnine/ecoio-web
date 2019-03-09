@@ -42,10 +42,15 @@ $witch.after(() => $progress.done())
 /* Global mqtt client */
 // ! in test
 import $MQTT from '@/lib/main/mqtt'
-Vue.use($MQTT, process.env.VUE_APP_MAIN_MQTT_CONNECTION, {
-  username: process.env.VUE_APP_MAIN_MQTT_USERNAME,
-  password: process.env.VUE_APP_MAIN_MQTT_PASSWORD
-})
+Vue.use(
+  $MQTT,
+  process.env.VUE_APP_MAIN_MQTT_CONNECTION,
+  {
+    username: process.env.VUE_APP_MAIN_MQTT_USERNAME,
+    password: process.env.VUE_APP_MAIN_MQTT_PASSWORD
+  },
+  process.env.VUE_APP_MAIN_MQTT_TOPIC_PREFIX || null
+)
 
 /* For vue instance */
 Vue.use({
