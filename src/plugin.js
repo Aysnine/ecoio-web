@@ -9,7 +9,7 @@ import $Progress from '@/lib/main/progress'
 export const $progress = $Progress()
 
 /* Global request */
-import $Request from '@/lib/main/$request'
+import $Request from '@/lib/main/request'
 // show progress
 export const $request = $Request({
   start: $progress.start,
@@ -17,14 +17,14 @@ export const $request = $Request({
 })
 
 /* Global Cookie storager */
-import $Cookie from '@/lib/main/$cookie'
+import $Cookie from '@/lib/main/cookie'
 export const $cookie = $Cookie(
   process.env.VUE_APP_MAIN_DOMAIN || '',
   process.env.VUE_APP_MAIN_COOKIE_VERSION || ''
 )
 
 /* Global logger (console) */
-import $Log from '@/lib/main/$log'
+import $Log from '@/lib/main/logger'
 export const $log = $Log
 
 /* Global time lib (dayjs) */
