@@ -35,5 +35,13 @@ export default [
       return role && to.meta && to.meta.role && to.meta.role.indexOf(role) == -1
     },
     reactor: '/404'
+  },
+
+  /* special control */
+
+  {
+    match: '/admin/account',
+    validator: () => store.getters.userRole !== 'admin',
+    reactor: '/404'
   }
 ]
