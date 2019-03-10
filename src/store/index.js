@@ -10,7 +10,9 @@ const store = new Vuex.Store({
   /* Root */
   getters: {
     user: state => state.user,
-    userRole: state => (state.user ? state.user.role : null),
+    userAccount: state =>
+      state.user && state.user.account ? state.user.account : null,
+    userRole: state => (state.user && state.user.role ? state.user.role : null),
     token: state => state.token
   },
   state: {
@@ -59,17 +61,17 @@ const store = new Vuex.Store({
         throw error
       }
     },
-    async userProfile({ getters: { token }, commit }) {
+    async userProfile({ commit }) {
       try {
-        const { data } = await userProfile(token)
+        const { data } = await userProfile()
         commit('SET_USER', data)
       } catch (error) {
         throw error
       }
     },
-    async userLogout({ getters: { token }, commit }) {
+    async userLogout({ commit }) {
       try {
-        await userLogout(token)
+        await userLogout()
         $cookie.remove('token')
         commit('SET_TOKEN', null)
         commit('SET_USER', null)

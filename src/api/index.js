@@ -15,16 +15,14 @@ export const userLogin = ({ account, pass }) =>
     data: qs.stringify({ account, pass })
   })
 
-export const userProfile = token =>
+export const userProfile = () =>
   req({
     method: 'post',
-    url: '/user/profile',
-    data: qs.stringify({ token })
+    url: '/user/profile'
   })
 
-export const userLogout = token =>
+export const userLogout = () =>
   req({
     method: 'post',
-    url: '/user/logout',
-    data: qs.stringify({ token })
+    url: '/user/logout'
   })
