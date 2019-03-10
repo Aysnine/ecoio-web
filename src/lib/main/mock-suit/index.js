@@ -89,7 +89,16 @@ const extend = (prop, value) => {
   CustomExtends[prop] = value
 }
 
+const interceptors = []
+const use = (func) => {
+  interceptors.push({ func })
+}
+
 /* 装配配置组 */
+
+const interceptor = input => {
+  return interceptors.reduce((x, { func }) => (func(x), x), input)
+}
 
 const wired = ({ url, type, body }) => ({
   method: type,
@@ -104,7 +113,7 @@ const setup = (path, method, handle) => {
   Mock.mock(
     path,
     method,
-    typeof handle === 'function' ? o => handle(wired(o)) : handle
+    typeof handle === 'function' ? o => handle(interceptor(wired(o))) : handle
   )
 }
 
@@ -132,4 +141,4 @@ const load = collection => {
   })
 }
 
-export default { load, extend }
+export default { load, extend, use }

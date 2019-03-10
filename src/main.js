@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 if (process.env.VUE_APP_PREVIEW === 'on') {
-  require('@/mock')
+  require('@/mock/http')
 }
 
 import './plugin'

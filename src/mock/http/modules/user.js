@@ -1,5 +1,3 @@
-import { $cookie } from '@/plugin'
-
 export default [
   {
     path: '/user/regist',
@@ -52,10 +50,10 @@ export default [
   {
     path: '/user/profile',
     method: 'post',
-    handle({ db }) {
+    handle({ db, token }) {
       let user = db
         .get('users')
-        .find({ token: $cookie.get('token') })
+        .find({ token })
         .cloneDeep()
         .value()
       delete user.pass
