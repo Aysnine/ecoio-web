@@ -40,19 +40,14 @@ $witch.before(() => $progress.start())
 $witch.after(() => $progress.done())
 
 /* Global mqtt client */
-// ! in test
 import $MQTT from '@/lib/main/mqtt'
-Vue.use(
-  $MQTT,
-  process.env.VUE_APP_MAIN_MQTT_CONNECTION,
-  {
-    username: process.env.VUE_APP_MAIN_MQTT_USERNAME,
-    password: process.env.VUE_APP_MAIN_MQTT_PASSWORD
-  },
-  process.env.VUE_APP_MAIN_MQTT_TOPIC_PREFIX || null
-)
+export const $mqtt = $MQTT({
+  connectionString: process.env.VUE_APP_MAIN_MQTT_CONNECTION_STRING,
+  topicPrefix: process.env.VUE_APP_MAIN_MQTT_TOPIC_PREFIX
+})
 
 /* For vue instance */
+Vue.use($mqtt.vue)
 Vue.use({
   install(Vue) {
     Vue.prototype.$cookie = $cookie
@@ -71,5 +66,6 @@ export default {
   $tm,
   $progress,
   $request,
-  $witch
+  $witch,
+  $mqtt
 }
