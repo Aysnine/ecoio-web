@@ -514,10 +514,10 @@
   dependencies:
     regenerator-transform "^0.13.4"
 
-"@babel/plugin-transform-runtime@^7.0.0":
-  version "7.3.4"
-  resolved "http://registry.npm.taobao.org/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.3.4.tgz#57805ac8c1798d102ecd75c03b024a5b3ea9b431"
-  integrity sha1-V4BayMF5jRAuzXXAOwJKWz6ptDE=
+"@babel/plugin-transform-runtime@^7.4.0":
+  version "7.4.3"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.4.3.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-transform-runtime%2Fdownload%2F%40babel%2Fplugin-transform-runtime-7.4.3.tgz#4d6691690ecdc9f5cb8c3ab170a1576c1f556371"
+  integrity sha1-TWaRaQ7NyfXLjDqxcKFXbB9VY3E=
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/helper-plugin-utils" "^7.0.0"
@@ -570,9 +570,9 @@
     "@babel/helper-regex" "^7.0.0"
     regexpu-core "^4.1.3"
 
-"@babel/preset-env@^7.0.0":
+"@babel/preset-env@^7.0.0 < 7.4.0":
   version "7.3.4"
-  resolved "http://registry.npm.taobao.org/@babel/preset-env/download/@babel/preset-env-7.3.4.tgz#887cf38b6d23c82f19b5135298bdb160062e33e1"
+  resolved "http://registry.npm.taobao.org/@babel/preset-env/download/@babel/preset-env-7.3.4.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fpreset-env%2Fdownload%2F%40babel%2Fpreset-env-7.3.4.tgz#887cf38b6d23c82f19b5135298bdb160062e33e1"
   integrity sha1-iHzzi20jyC8ZtRNSmL2xYAYuM+E=
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
@@ -756,17 +756,18 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-app@^3.5.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.5.0.tgz#7d1584baba0d633b72cb950308bb35a6b07389d4"
-  integrity sha1-fRWEuroNYztyy5UDCLs1prBzidQ=
+"@vue/babel-preset-app@^3.5.5":
+  version "3.5.5"
+  resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.5.5.tgz#d28bfc5fdec0b3dcc4edf2aba975cce09699db92"
+  integrity sha1-0ov8X97As9zE7fKrqXXM4JaZ25I=
   dependencies:
+    "@babel/helper-module-imports" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-decorators" "^7.1.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/plugin-syntax-jsx" "^7.0.0"
-    "@babel/plugin-transform-runtime" "^7.0.0"
-    "@babel/preset-env" "^7.0.0"
+    "@babel/plugin-transform-runtime" "^7.4.0"
+    "@babel/preset-env" "^7.0.0 < 7.4.0"
     "@babel/runtime" "^7.0.0"
     "@babel/runtime-corejs2" "^7.2.0"
     "@vue/babel-preset-jsx" "^1.0.0-beta.2"
@@ -820,28 +821,28 @@
     "@vue/babel-plugin-transform-vue-jsx" "^1.0.0-beta.2"
     camelcase "^5.0.0"
 
-"@vue/cli-overlay@^3.5.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-overlay/download/@vue/cli-overlay-3.5.0.tgz#25a61ec5bf56bef6dca12eb0382a57af7b647d5e"
-  integrity sha1-JaYexb9WvvbcoS6wOCpXr3tkfV4=
+"@vue/cli-overlay@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-overlay/download/@vue/cli-overlay-3.5.1.tgz#8d9214d73c8c9a303147190f1476c134ef726ff9"
+  integrity sha1-jZIU1zyMmjAxRxkPFHbBNO9yb/k=
 
-"@vue/cli-plugin-babel@^3.3.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.5.0.tgz#0a572c4e73cad97f86684860e917cb3e3c883b79"
-  integrity sha1-ClcsTnPK2X+GaEhg6RfLPjyIO3k=
+"@vue/cli-plugin-babel@^3.5.5":
+  version "3.5.5"
+  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.5.5.tgz#f07e7c699e445677a51d6763770d2904bf3c9d65"
+  integrity sha1-8H58aZ5EVnelHWdjdw0pBL88nWU=
   dependencies:
     "@babel/core" "^7.0.0"
-    "@vue/babel-preset-app" "^3.5.0"
-    "@vue/cli-shared-utils" "^3.5.0"
+    "@vue/babel-preset-app" "^3.5.5"
+    "@vue/cli-shared-utils" "^3.5.1"
     babel-loader "^8.0.5"
     webpack ">=4 < 4.29"
 
-"@vue/cli-plugin-eslint@^3.3.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-eslint/download/@vue/cli-plugin-eslint-3.5.0.tgz#c5529ace3925766ffb45d99f0fddcc019b0181b5"
-  integrity sha1-xVKazjkldm/7RdmfD93MAZsBgbU=
+"@vue/cli-plugin-eslint@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-eslint/download/@vue/cli-plugin-eslint-3.5.1.tgz#20b4689be35d6b2146cbde2eb6f9d2f3033a0e81"
+  integrity sha1-ILRom+NdayFGy94utvnS8wM6DoE=
   dependencies:
-    "@vue/cli-shared-utils" "^3.5.0"
+    "@vue/cli-shared-utils" "^3.5.1"
     babel-eslint "^10.0.1"
     eslint-loader "^2.1.2"
     globby "^9.0.0"
@@ -850,24 +851,24 @@
     eslint "^4.19.1"
     eslint-plugin-vue "^4.7.1"
 
-"@vue/cli-plugin-pwa@^3.3.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-pwa/download/@vue/cli-plugin-pwa-3.5.0.tgz#23a08222c1b94cf1f68fffc0ccb987f406a27d5e"
-  integrity sha1-I6CCIsG5TPH2j//AzLmH9AaifV4=
+"@vue/cli-plugin-pwa@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-pwa/download/@vue/cli-plugin-pwa-3.5.1.tgz#5bba2e533867b7fc8d62d028b6bfdc5a1962c120"
+  integrity sha1-W7ouUzhnt/yNYtAotr/cWhliwSA=
   dependencies:
-    "@vue/cli-shared-utils" "^3.5.0"
+    "@vue/cli-shared-utils" "^3.5.1"
     webpack ">=4 < 4.29"
     workbox-webpack-plugin "^3.6.3"
 
-"@vue/cli-service@^3.3.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-3.5.0.tgz#ccc21c4764dfe3d374818073d0a023da939178be"
-  integrity sha1-zMIcR2Tf49N0gYBz0KAj2pOReL4=
+"@vue/cli-service@^3.5.3":
+  version "3.5.3"
+  resolved "http://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-3.5.3.tgz#079b09065ad6597211906c65c12b5862092637f2"
+  integrity sha1-B5sJBlrWWXIRkGxlwStYYgkmN/I=
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@soda/friendly-errors-webpack-plugin" "^1.7.1"
-    "@vue/cli-overlay" "^3.5.0"
-    "@vue/cli-shared-utils" "^3.5.0"
+    "@vue/cli-overlay" "^3.5.1"
+    "@vue/cli-shared-utils" "^3.5.1"
     "@vue/component-compiler-utils" "^2.6.0"
     "@vue/preload-webpack-plugin" "^1.1.0"
     "@vue/web-component-wrapper" "^1.2.0"
@@ -918,10 +919,10 @@
     webpack-merge "^4.2.1"
     yorkie "^2.0.0"
 
-"@vue/cli-shared-utils@^3.5.0":
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-shared-utils/download/@vue/cli-shared-utils-3.5.0.tgz#95b97e13e32c14d5a0ab62322796a615752e843a"
-  integrity sha1-lbl+E+MsFNWgq2IyJ5amFXUuhDo=
+"@vue/cli-shared-utils@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-shared-utils/download/@vue/cli-shared-utils-3.5.1.tgz#71d66f06fc619ba28df279bd7d37ba1ba29c9066"
+  integrity sha1-cdZvBvxhm6KN8nm9fTe6G6KckGY=
   dependencies:
     chalk "^2.4.1"
     execa "^1.0.0"
@@ -2683,10 +2684,10 @@ date-now@^0.1.4:
   resolved "http://registry.npm.taobao.org/date-now/download/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
-dayjs@^1.8.8:
-  version "1.8.9"
-  resolved "http://registry.npm.taobao.org/dayjs/download/dayjs-1.8.9.tgz#8b5fda2f995ff5f29705894e1d23240f7f674f61"
-  integrity sha1-i1/aL5lf9fKXBYlOHSMkD39nT2E=
+dayjs@^1.8.12:
+  version "1.8.12"
+  resolved "http://registry.npm.taobao.org/dayjs/download/dayjs-1.8.12.tgz#f9610fb9b115aa2fe2a07e742c130df418cee76a"
+  integrity sha1-+WEPubEVqi/ioH50LBMN9BjO52o=
 
 de-indent@^1.0.2:
   version "1.0.2"
@@ -3018,12 +3019,12 @@ echarts-wordcloud@^1.1.3:
   resolved "http://registry.npm.taobao.org/echarts-wordcloud/download/echarts-wordcloud-1.1.3.tgz#07b140c8ba76b19c317b43c310f3d5dc99289ff2"
   integrity sha1-B7FAyLp2sZwxe0PDEPPV3Jkon/I=
 
-echarts@^4.2.0-rc.2:
-  version "4.2.0-rc.2"
-  resolved "http://registry.npm.taobao.org/echarts/download/echarts-4.2.0-rc.2.tgz#6a98397aafa81b65cbf0bc15d9afdbfb244df91e"
-  integrity sha1-apg5eq+oG2XL8LwV2a/b+yRN+R4=
+echarts@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  integrity sha1-mo6jsDNU+G+CTZdiXDNM8Wll7wM=
   dependencies:
-    zrender "4.0.5"
+    zrender "4.0.7"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -3040,10 +3041,10 @@ electron-to-chromium@^1.3.113:
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.113.tgz#b1ccf619df7295aea17bc6951dc689632629e4a9"
   integrity sha1-scz2Gd9yla6he8aVHcaJYyYp5Kk=
 
-element-ui@^2.6.1:
-  version "2.6.1"
-  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.6.1.tgz#86db79ff5de9b1bcc3187b65b3772b0c54074718"
-  integrity sha1-htt5/13psbzDGHtls3crDFQHRxg=
+element-ui@^2.7.2:
+  version "2.7.2"
+  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.7.2.tgz#8bc5bef5c3c53a2170422516b4324e70069c23d1"
+  integrity sha1-i8W+9cPFOiFwQiUWtDJOcAacI9E=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -3257,10 +3258,18 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-scope@^4.0.0, eslint-scope@^4.0.2:
+eslint-scope@^4.0.0:
   version "4.0.2"
   resolved "http://registry.npm.taobao.org/eslint-scope/download/eslint-scope-4.0.2.tgz#5f10cd6cabb1965bf479fa65745673439e21cb0e"
   integrity sha1-XxDNbKuxllv0efpldFZzQ54hyw4=
+  dependencies:
+    esrecurse "^4.1.0"
+    estraverse "^4.1.1"
+
+eslint-scope@^4.0.3:
+  version "4.0.3"
+  resolved "http://registry.npm.taobao.org/eslint-scope/download/eslint-scope-4.0.3.tgz#ca03833310f6889a3264781aa82e63eb9cfe7848"
+  integrity sha1-ygODMxD2iJoyZHgaqC5j65z+eEg=
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
@@ -3319,10 +3328,10 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint@^5.8.0:
-  version "5.15.1"
-  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.15.1.tgz#8266b089fd5391e0009a047050795b1d73664524"
-  integrity sha1-gmawif1TkeAAmgRwUHlbHXNmRSQ=
+eslint@^5.16.0:
+  version "5.16.0"
+  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
+  integrity sha1-oeOsGq5KP72Clvz496tzFMu2q+o=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -3330,7 +3339,7 @@ eslint@^5.8.0:
     cross-spawn "^6.0.5"
     debug "^4.0.1"
     doctrine "^3.0.0"
-    eslint-scope "^4.0.2"
+    eslint-scope "^4.0.3"
     eslint-utils "^1.3.1"
     eslint-visitor-keys "^1.0.0"
     espree "^5.0.1"
@@ -3344,7 +3353,7 @@ eslint@^5.8.0:
     import-fresh "^3.0.0"
     imurmurhash "^0.1.4"
     inquirer "^6.2.2"
-    js-yaml "^3.12.0"
+    js-yaml "^3.13.0"
     json-stable-stringify-without-jsonify "^1.0.1"
     levn "^0.3.0"
     lodash "^4.17.11"
@@ -3905,10 +3914,10 @@ functional-red-black-tree@^1.0.1:
   resolved "http://registry.npm.taobao.org/functional-red-black-tree/download/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-fuse.js@^3.3.0:
-  version "3.4.3"
-  resolved "http://registry.npm.taobao.org/fuse.js/download/fuse.js-3.4.3.tgz#74d99f64147a2f77730fceb091881643ae9a6fbe"
-  integrity sha1-dNmfZBR6L3dzD86wkYgWQ66ab74=
+fuse.js@^3.4.4:
+  version "3.4.4"
+  resolved "http://registry.npm.taobao.org/fuse.js/download/fuse.js-3.4.4.tgz#f98f55fcb3b595cf6a3e629c5ffaf10982103e95"
+  integrity sha1-+Y9V/LO1lc9qPmKcX/rxCYIQPpU=
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -4950,6 +4959,14 @@ js-yaml@^3.12.0, js-yaml@^3.9.0, js-yaml@^3.9.1:
   version "3.12.2"
   resolved "http://registry.npm.taobao.org/js-yaml/download/js-yaml-3.12.2.tgz#ef1d067c5a9d9cb65bd72f285b5d8105c77f14fc"
   integrity sha1-7x0GfFqdnLZb1y8oW12BBcd/FPw=
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
+js-yaml@^3.13.0:
+  version "3.13.0"
+  resolved "http://registry.npm.taobao.org/js-yaml/download/js-yaml-3.13.0.tgz#38ee7178ac0eea2c97ff6d96fff4b18c7d8cf98e"
+  integrity sha1-OO5xeKwO6iyX/22W//SxjH2M+Y4=
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
@@ -8751,10 +8768,10 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.5.21:
-  version "2.6.8"
-  resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.6.8.tgz#750802604595134775b9c53141b9850b35255e1c"
-  integrity sha1-dQgCYEWVE0d1ucUxQbmFCzUlXhw=
+vue-template-compiler@^2.6.10:
+  version "2.6.10"
+  resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
+  integrity sha1-MjtPNJXwT6o1AzN6gvXWUHeZycw=
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -8764,10 +8781,10 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.5.21:
-  version "2.6.8"
-  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
-  integrity sha1-8hy8U2v8FPfR15KhN7sS9p5g6pE=
+vue@^2.6.10:
+  version "2.6.10"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
 
 vuex@^3.0.1:
   version "3.1.0"
@@ -9242,7 +9259,7 @@ yorkie@^2.0.0:
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
 
-zrender@4.0.5:
-  version "4.0.5"
-  resolved "http://registry.npm.taobao.org/zrender/download/zrender-4.0.5.tgz#6e8f738971ce2cd624aac82b2156729b1c0e5a82"
-  integrity sha1-bo9ziXHOLNYkqsgrIVZymxwOWoI=
+zrender@4.0.7:
+  version "4.0.7"
+  resolved "http://registry.npm.taobao.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  integrity sha1-Fa6WCCL17+1BCZXTflEH/j3hDm0=
