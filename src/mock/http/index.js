@@ -13,4 +13,4 @@ MockSuit.use(req => (req.token = $cookie.get('token')))
 ;(r =>
   r.keys().forEach(key => {
     MockSuit.load(r(key).default || r(key))
-  }))(require.context('./modules', true, /.*\.js$/))
+  }))(require.context('@/api/', true, /.*\.mock\.js$/))
