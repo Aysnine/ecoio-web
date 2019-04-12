@@ -13,6 +13,7 @@ const store = new Vuex.Store({
     userAccount: state =>
       state.user && state.user.account ? state.user.account : null,
     userRole: state => (state.user && state.user.role ? state.user.role : null),
+    userId: state => (state.user && state.user.id ? state.user.id : null),
     token: state => state.token
   },
   state: {

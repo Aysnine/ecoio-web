@@ -13,22 +13,20 @@ export default {
     if (needReload) return location.reload()
   },
   computed: {
-    ...mapGetters(['userAccount'])
+    ...mapGetters(['userAccount', 'userId', 'token'])
   },
   watch: {
     userAccount(value) {
       if (this.$env__real_mqtt) {
-        /* Dynamic switch mqtt account & connection */
+        /* Dynamic mqtt connection */
         if (value) {
-          this.$mqtt
-            .login({ username: 'hello', password: 'hello' })
-            .alias('account', 'hello')
-            .subscribe('@/user/$account/#')
+          this.$mqtt.login({
+            clientId: `user_${this.userId}_${this.token}`,
+            username: value,
+            password: 'NONE'
+          })
         } else {
-          this.$mqtt
-            .alias('account', null)
-            .unsubscribe('@/user/$account/#')
-            .logout()
+          this.$mqtt.logout()
         }
       }
     }

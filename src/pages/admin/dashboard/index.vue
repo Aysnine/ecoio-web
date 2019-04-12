@@ -1,17 +1,17 @@
 <template lang="pug">
   div
-    info-blocks(:data='infos')
+    info-blocks(:data='computedInfos')
     ghost-time-line.p-10.pt-20(:data='upline', setTitle='数据上传活跃量', :labelMap='{value: "数据传总量"}', height='520px')
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import InfoBlocks from './components/InfoBlocks'
 import GhostTimeLine from '@/components/extend/chart/GhostTimeLine'
 
 export default {
-  created() {
-    this.$mqtt.alias('user', 'hello')
-    this.$mqtt.subscribe('ecoio/user/hello/#')
+  mounted() {
+    this.$mqtt.subscribe('ecoio/device')
   },
   data() {
     return {
@@ -22,8 +22,13 @@ export default {
           sep: '/',
           data: [100, 20, 80]
         },
-        { icon: 'user', label: '用户总数 / 在线 / 离线', data: [512, 12, 500] },
-        { icon: 'data', label: '数据上传总量', data: 2048 }
+        { icon: 'data', label: '数据上传总量', data: 2048 },
+        {
+          icon: 'user',
+          label: '用户总数 / 在线 / 离线',
+          data: [512, 12, 500],
+          role: 'admin'
+        }
       ],
       upline: [
         { value: 1078, time: '2014-01-13 03:40:01.305287' },
@@ -100,8 +105,14 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters(['userRole']),
+    computedInfos() {
+      return this.infos.filter(({ role }) => !role || role === this.userRole)
+    }
+  },
   mqtt: {
-    '@/user/$user/iot01'(msg) {
+    '@/device'(msg) {
       this.$message.success(msg)
     }
   },
