@@ -96,15 +96,15 @@ function Emitter({ prefix }) {
   return instance
 }
 
-function Observer(connection, options, emitter) {
+function Observer(connection, options, emitter, convert) {
   const client = MQTT.connect(connection, options)
   client.on('message', (topic, payload /* , packet */) => {
-    emitter.emit(topic, payload.toString())
+    emitter.emit(topic, convert(payload.toString()))
   })
   return client
 }
 
-function Factory({ topicPrefix, connectionString }) {
+function Factory({ topicPrefix, connectionString, convert = input => input }) {
   let client = null
   let emitter = Emitter({ prefix: topicPrefix })
   let saveConnectionString = connectionString
@@ -117,7 +117,12 @@ function Factory({ topicPrefix, connectionString }) {
     login({ connectionString, ...options }) {
       this.logout()
       saveConnectionString = connectionString || saveConnectionString
-      const observer = new Observer(saveConnectionString, options, emitter)
+      const observer = new Observer(
+        saveConnectionString,
+        options,
+        emitter,
+        convert
+      )
       client = observer
       return this
     },

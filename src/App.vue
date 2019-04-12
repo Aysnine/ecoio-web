@@ -20,13 +20,15 @@ export default {
       if (this.$env__real_mqtt) {
         /* Dynamic mqtt connection */
         if (value) {
-          this.$mqtt.login({
-            clientId: `user_${this.userId}_${this.token}`,
-            username: value,
-            password: 'NONE'
-          })
+          this.$mqtt
+            .login({
+              clientId: `user_${this.userId}_${this.token}`,
+              username: value,
+              password: 'NONE'
+            })
+            .subscribe('ecoio/#')
         } else {
-          this.$mqtt.logout()
+          this.$mqtt.unsubscribe('ecoio/#').logout()
         }
       }
     }

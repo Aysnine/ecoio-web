@@ -43,7 +43,15 @@ $witch.after(() => $progress.done())
 import $MQTT from '@/lib/main/mqtt'
 export const $mqtt = $MQTT({
   connectionString: process.env.VUE_APP_MAIN_MQTT_CONNECTION_STRING,
-  topicPrefix: process.env.VUE_APP_MAIN_MQTT_TOPIC_PREFIX
+  topicPrefix: process.env.VUE_APP_MAIN_MQTT_TOPIC_PREFIX,
+  convert: string => {
+    try {
+      const json = JSON.parse(string)
+      return json
+    } catch {
+      return null
+    }
+  }
 })
 
 /* For vue instance */

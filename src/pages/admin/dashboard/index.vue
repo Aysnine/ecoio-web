@@ -10,9 +10,6 @@ import InfoBlocks from './components/InfoBlocks'
 import GhostTimeLine from '@/components/extend/chart/GhostTimeLine'
 
 export default {
-  mounted() {
-    this.$mqtt.subscribe('ecoio/device')
-  },
   data() {
     return {
       infos: [
@@ -112,8 +109,8 @@ export default {
     }
   },
   mqtt: {
-    '@/device'(msg) {
-      this.$message.success(msg)
+    '@/device'(data, topic) {
+      this.$log('MQTT', topic, data) // !DEBUG
     }
   },
   components: {
