@@ -33,10 +33,12 @@ export const $tm = $Tm
 
 /* Global router witch */
 import $Witch from '@/lib/main/witch-suit'
-import rules from '@/router/rules'
-export const $witch = $Witch(router).rules(rules)
+import { rules, init } from '@/router/witch'
+export const $witch = $Witch(router)
+  .rules(rules)
+  .init(init)
 // show progress
-$witch.before(() => $progress.start())
+$witch.before(async () => $progress.start())
 $witch.after(() => $progress.done())
 
 /* Global mqtt client */

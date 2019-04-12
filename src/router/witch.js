@@ -2,7 +2,12 @@ import store from '@/store'
 import { $cookie } from '@/plugin'
 import { Message } from 'element-ui'
 
-export default [
+export const init = async () => {
+  const needReload = await store.dispatch('init')
+  if (needReload) return location.reload()
+}
+
+export const rules = [
   /* login status control */
 
   {

@@ -8,10 +8,6 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  async mounted() {
-    const needReload = await this.init()
-    if (needReload) return location.reload()
-  },
   computed: {
     ...mapGetters(['userAccount', 'userId', 'token'])
   },
