@@ -24,6 +24,7 @@ export default {
       try {
         await this.userLogin({ account, pass })
         this.$router.push({ path: '/admin' })
+        return true
       } catch (error) {
         this.$message.error(error.msg)
       }

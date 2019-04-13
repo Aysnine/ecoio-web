@@ -58,8 +58,8 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (valid) {
           this.loading = true
-          await this.handleLogin(this.form)
-          this.loading = false
+          const stayLoading = await this.handleLogin(this.form)
+          this.loading = stayLoading || false
         } else {
           return false
         }
