@@ -1,8 +1,8 @@
 <template lang="pug">
   .p-10
     .p-10
-      el-button(type='danger', icon='el-icon-delete', circle)
       el-button(type='primary', icon='el-icon-plus', circle)
+      el-button(v-if='value', type='danger', icon='el-icon-delete', circle)
       el-input.ml-10.circled(placeholder='请输入搜索内容', prefix-icon='el-icon-search', v-model='search', clearable, style='width: 200px')
     template(v-for='item in computedData')
       .box-wrap.p-10

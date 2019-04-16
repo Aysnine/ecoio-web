@@ -103,5 +103,29 @@ export default [
             msg: '失败'
           }
     }
+  },
+  {
+    path: '/account/fetch',
+    method: 'get',
+    handle({ db }) {
+      return {
+        code: 0,
+        msg: '完成',
+        data: db.get('users').value()
+      }
+    }
+  },
+  {
+    path: '/account/delete',
+    method: 'post',
+    handle({ db, body: { id } }) {
+      db.get('users')
+        .remove({ id })
+        .write()
+      return {
+        code: 0,
+        msg: '完成'
+      }
+    }
   }
 ]

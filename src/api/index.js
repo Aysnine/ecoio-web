@@ -33,3 +33,16 @@ export const updateData = data =>
     url: '/user/data',
     data: qs.stringify(data)
   })
+
+export const fetchAccount = () =>
+  req({
+    method: 'get',
+    url: '/account/fetch'
+  })
+
+export const deleteAccount = id =>
+  req({
+    method: 'post',
+    url: '/account/delete',
+    data: qs.stringify({ id })
+  })
