@@ -41,7 +41,7 @@ export default {
         this.memLast = mem
       }, 1000)
       setTimeout(() => {
-        let disk = 60 + ~~(Math.random() * 2)
+        let disk = 20 + ~~(Math.random() * 2)
         this.diskLast = disk
       }, 1000)
     }
@@ -69,7 +69,9 @@ export default {
       )}G`
     },
     diskDesc() {
-      return `存储 ${this.diskLast.toFixed(2)} / ${(128).toFixed(2)}G`
+      return `存储 ${((this.diskLast / 100) * 40).toFixed(2)} / ${(40).toFixed(
+        2
+      )}G`
     }
   },
   components: {

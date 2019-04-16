@@ -14,7 +14,7 @@
             .f-r
               el-button(round)
                 svg-icon.B.mr-5(icon='m-account')
-                span ADMIN
+                span {{ user.nickname }}
               el-button(round, @click='handleLogout') 退出登陆
                 i.el-icon-arrow-right.el-icon--right
           el-main.pm-0.vh-100.thin-bg
@@ -29,6 +29,10 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters(['user']),
+    ...mapGetters('admin', ['menu'])
+  },
   methods: {
     ...mapActions(['userLogout']),
     async handleLogout() {
@@ -51,9 +55,6 @@ export default {
         // cancel
       }
     }
-  },
-  computed: {
-    ...mapGetters('admin', ['menu'])
   }
 }
 </script>
