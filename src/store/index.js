@@ -17,10 +17,10 @@ const store = new Vuex.Store({
   /* Root */
   getters: {
     user: state => state.user,
-    userAccount: state =>
-      state.user && state.user.account ? state.user.account : null,
-    userRole: state => (state.user && state.user.role ? state.user.role : null),
-    userId: state => (state.user && state.user.id ? state.user.id : null),
+    userAccount: state => get(state, 'user.account'),
+    userRole: state => get(state, 'user.role'),
+    userNickname: state => get(state, 'user.nickname'),
+    userId: state => get(state, 'user.id'),
     token: state => state.token,
     devices: state => get(state, 'user.data.devices.devices', []),
     weathers: state => get(state, 'user.data.devices.weathers', [])

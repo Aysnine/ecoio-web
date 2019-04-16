@@ -18,7 +18,7 @@ export default {
         role: 'admin'
       },
       { label: '天气信息', icon: 'weather', path: '/admin/weather' },
-      { label: '服务器', icon: 'system', path: '/admin/system' }
+      { label: '服务器', icon: 'system', path: '/admin/system', role: 'admin' }
     ]
   },
   mutations: {

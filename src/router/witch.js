@@ -48,5 +48,10 @@ export const rules = [
     match: '/admin/account',
     validator: () => store.getters.userRole !== 'admin',
     reactor: '/404'
+  },
+  {
+    match: '/admin/system',
+    validator: () => store.getters.userRole !== 'admin',
+    reactor: '/404'
   }
 ]
