@@ -2,26 +2,26 @@
   el-scrollbar
     div(style='height: calc(100vh - 60px)')
       el-row
-        el-col(:md='24', :lg='12')
+        el-col(:md='24', :lg='24')
           .p-10
             .p-10.pv-20.fs-ees(style='color: #a9aece82')
               span CURRENT LOCATION
-            .p-10.fs-el.fw-s.va-b(style='color: #8da7dd')
+            .p-10.fs-el.va-b(style='color: #8da7dd')
               i.el-icon-location.mr-5
               transition(name='power-switch', mode='out-in')
                 span(:key='data.label') {{ data.label }}
             .line.ml-10
             .p-10
-              .fs-es.data(v-if='isArray(data.data)')
+              .fs-lg.data(v-if='isArray(data.data)')
                 template(v-for='i in data.data')
                   count-to(v-if='typeof i === "number"', :start-val='0', :end-val='i', :duration='3000', :decimals='0', autoplay, separator='')
                   template(v-if='typeof i === "object" && typeof i.value === "number"')
-                    .prop-item.fw-s.va-b
+                    .prop-item.va-b
                       svg-icon.M.mr-8.ml-1(v-if='i.icon', :icon='"we-" + i.icon')
                       span.mr-5(v-if='i.label') {{ i.label }} 
                       count-to(:start-val='0', :end-val='i.value', :duration='3000', :decimals='i.decimals || 0', autoplay, :separator='i.separator || ""', :prefix='i.prefix || ""', :suffix='i.suffix || ""')
                   template(v-if='typeof i === "object" && typeof i.value === "string"')
-                    .prop-item.fw-s.va-b
+                    .prop-item.va-b
                       svg-icon.M.mr-8.ml-1(v-if='i.icon', :icon='"we-" + i.icon')
                       span.mr-5(v-if='i.label') {{ i.label }} 
                       span  {{ i.value }}
@@ -29,21 +29,21 @@
                 count-to(:start-val='0', :end-val='data.data', :duration='3000', :decimals='0', autoplay, separator='')
               .fs-es.ml-10.pl-5.pt-3.data(v-if='typeof data.data === "string"')
                 span {{ data.data }}
-        el-col(:md='24', :lg='12')
-          .p-20.pt-20.f-r
-            el-card.hero-block.we-card(shadow='never')
-                transition(name='el-fade-in', mode='out-in')
-                  .p-20.ta-c(:key='data.label')
-                    div(style='display: inline-block')
-                      .va-m.f-l
-                        svg-icon.logod(:icon='"wh-" + data.icon')
-                        .fs-ees.p-10 {{ data.icon }}
-                      .wow.f-l.fw-s {{ data.data[0].value }}°
-                      .f-c
-      .ph-20(v-if='!(error || loading)')
-        ul.m-0.grid-wrap
-          li(v-for='i in 6')
-            i.el-icon-star-off
+        // el-col(:md='24', :lg='12')
+        //   .p-20.pt-20.f-r
+        //     el-card.hero-block.we-card(shadow='never')
+        //         transition(name='el-fade-in', mode='out-in')
+        //           .p-20.ta-c(:key='data.label')
+        //             div(style='display: inline-block')
+        //               .va-m.f-l
+        //                 svg-icon.logod(:icon='"wh-" + data.icon')
+        //                 .fs-ees.p-10 {{ data.icon }}
+        //               .wow.f-l.fw-s {{ data.data[0].value }}°
+        //               .f-c
+      // .ph-20(v-if='!(error || loading)')
+      //   ul.m-0.grid-wrap
+      //     li(v-for='i in 6')
+      //       i.el-icon-star-off
     .abf(v-if='error')
       .ta-c.fs-es.error-tips
         i.el-icon-circle-close-outline.mr-5.va-b
@@ -133,6 +133,7 @@ export default {
 .we-card
   position relative
   margin auto
+  padding 5em
   width 360px
   border-color #ecf5ff
   color #97a8be

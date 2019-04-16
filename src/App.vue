@@ -22,9 +22,10 @@ export default {
               username: value,
               password: 'NONE'
             })
-            .subscribe('ecoio/#')
+            .alias('user', this.userId)
+            .subscribe(['ecoio/#'])
         } else {
-          this.$mqtt.unsubscribe('ecoio/#').logout()
+          this.$mqtt.alias('user', undefined).logout()
         }
       }
     }

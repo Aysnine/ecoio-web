@@ -9,7 +9,14 @@ export default [
         .value()
       if (!isExist) {
         db.get('users')
-          .push({ id: uid(), account, nickname, pass, role: 'member' })
+          .push({
+            id: uid(),
+            account,
+            nickname,
+            pass,
+            role: 'member',
+            data: { weathers: [], devices: [] }
+          })
           .write()
       }
       return isExist
@@ -66,6 +73,34 @@ export default [
         : {
             code: 1,
             msg: '登陆过期，请重新登陆'
+          }
+    }
+  },
+  {
+    path: '/user/data',
+    method: 'post',
+    handle({ db, body, token }) {
+      let user = (user = db
+        .get('users')
+        .find({ token })
+        .value())
+      if (user) {
+        let user = db
+          .get('users')
+          .find({ token })
+          .assign({ data: { ...user.data, ...body } })
+          .write()
+      }
+
+      return user
+        ? {
+            code: 0,
+            msg: '完成',
+            data: user
+          }
+        : {
+            code: 1,
+            msg: '失败'
           }
     }
   }

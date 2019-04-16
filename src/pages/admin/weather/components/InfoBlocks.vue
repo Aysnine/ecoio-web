@@ -1,7 +1,9 @@
 <template lang="pug">
   .p-10
     .p-10
-      el-input.circled(placeholder='请输入搜索内容', prefix-icon='el-icon-search', v-model='search', clearable)
+      el-button(type='danger', icon='el-icon-delete', circle)
+      el-button(type='primary', icon='el-icon-plus', circle)
+      el-input.ml-10.circled(placeholder='请输入搜索内容', prefix-icon='el-icon-search', v-model='search', clearable, style='width: 200px')
     template(v-for='item in computedData')
       .box-wrap.p-10
         .box(:class='{ target: value && item.label === value }', @click='$emit("input", item.label)')
@@ -23,14 +25,14 @@
             .fs-es.ml-10.pl-5.pt-3.data(v-if='typeof item.data === "string"')
               span {{ item.data }}
           .f-c
-    .box-wrap.p-10(v-if='!search')
-      .box.squared.ta-c.fs-es.ol-1
-        i.el-icon-plus.logod
-        span 添加
-    .box-wrap.p-10(v-if='!computedData.length')
-      .box.squared.ta-c.fs-es
-        i.el-icon-search.logod
-        span 没有匹配项
+    // .box-wrap.p-10(v-if='!search')
+    //   .box.squared.ta-c.fs-es.ol-1
+    //     i.el-icon-plus.logod
+    //     span 添加
+    // .box-wrap.p-10(v-if='!computedData.length')
+    //   .box.squared.ta-c.fs-es
+    //     i.el-icon-search.logod
+    //     span 没有匹配项
 </template>
 
 <script>
@@ -83,8 +85,8 @@ export default {
 .ol-1
   outline dashed 1px
 .box-wrap
-  display block
-  max-width 300px
+  display inline-block
+  width 300px
   overflow hidden
 .box
   background #fff
@@ -118,7 +120,7 @@ export default {
     text-overflow ellipsis
   .data
     color #97a8be
-    max-width 180px
+    max-width 200px
     white-space nowrap
     overflow hidden
     text-overflow ellipsis

@@ -2,7 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import dict from '@/dict'
 import { $cookie } from '@/plugin'
-import { userRegist, userLogin, userLogout, userProfile } from '@/api'
+import {
+  userRegist,
+  userLogin,
+  userLogout,
+  userProfile,
+  updateData
+} from '@/api'
+import { get } from 'lodash'
 
 Vue.use(Vuex)
 
@@ -14,7 +21,9 @@ const store = new Vuex.Store({
       state.user && state.user.account ? state.user.account : null,
     userRole: state => (state.user && state.user.role ? state.user.role : null),
     userId: state => (state.user && state.user.id ? state.user.id : null),
-    token: state => state.token
+    token: state => state.token,
+    devices: state => get(state, 'user.data.devices.devices', []),
+    weathers: state => get(state, 'user.data.devices.weathers', [])
   },
   state: {
     user: null,
@@ -76,6 +85,14 @@ const store = new Vuex.Store({
         $cookie.remove('token')
         commit('SET_TOKEN', null)
         commit('SET_USER', null)
+      } catch (error) {
+        throw error
+      }
+    },
+    async updateData({ dispatch }, data) {
+      try {
+        await updateData(data)
+        await dispatch('userProfile')
       } catch (error) {
         throw error
       }

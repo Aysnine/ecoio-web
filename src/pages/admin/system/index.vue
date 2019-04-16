@@ -64,7 +64,7 @@ export default {
       return `CPU ${((this.cpuLast / 100) * 8).toFixed(2)}GHz`
     },
     memDesc() {
-      return `内存 ${((this.memLast / 100) * 12).toFixed(2)} / ${(12).toFixed(
+      return `内存 ${((this.memLast / 100) * 4).toFixed(2)} / ${(4).toFixed(
         2
       )}G`
     },

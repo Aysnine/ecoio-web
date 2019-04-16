@@ -26,3 +26,10 @@ export const userLogout = () =>
     method: 'post',
     url: '/user/logout'
   })
+
+export const updateData = data =>
+  req({
+    method: 'post',
+    url: '/user/data',
+    data: qs.stringify(data)
+  })
