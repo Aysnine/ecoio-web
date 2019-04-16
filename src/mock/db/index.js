@@ -14,14 +14,14 @@ db.defaults({
     {
       id: '1',
       account: 'admin',
-      nickname: 'admin',
+      nickname: '管理员',
       pass: 'admin',
       role: 'admin'
     },
     {
       id: '2',
       account: 'member',
-      nickname: 'member',
+      nickname: '用户A',
       pass: 'member',
       role: 'member'
     }

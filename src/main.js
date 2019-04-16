@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-if (process.env.VUE_APP_PREVIEW === 'on') {
+if (process.env.VUE_APP_MOCK === 'on') {
   require('@/mock/http')
 }
 
