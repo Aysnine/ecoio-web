@@ -22,8 +22,8 @@ const store = new Vuex.Store({
     userNickname: state => get(state, 'user.nickname'),
     userId: state => get(state, 'user.id'),
     token: state => state.token,
-    devices: state => get(state, 'user.data.devices.devices', []),
-    weathers: state => get(state, 'user.data.devices.weathers', [])
+    devices: state => get(state, 'user.data.devices', []),
+    weathers: state => get(state, 'user.data.devices', [])
   },
   state: {
     user: null,

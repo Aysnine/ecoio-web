@@ -31,6 +31,7 @@ export default {
                 : [
                     'ecoio/weather/#',
                     'ecoio/device',
+                    `ecoio/device/${this.userId}`,
                     `ecoio/device/${this.userId}/#`
                   ]
             )
