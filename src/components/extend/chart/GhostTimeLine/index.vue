@@ -30,7 +30,7 @@ export default {
           color: '#ccd7e5',
           rotate: 60,
           formatter(val) {
-            return tm(val).format('MM/DD HH:mm')
+            return tm(val).format('MM/DD HH:mm:ss')
           }
         },
         splitLine: {

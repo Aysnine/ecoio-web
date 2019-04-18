@@ -60,7 +60,7 @@ export default {
       immediate: true
     },
     autoCore: {
-      time: 500,
+      time: 3000,
       repeat: true,
       immediate: true
     }
@@ -75,6 +75,7 @@ export default {
           assign(this.core, data)
           break
       }
+      this.t[prop] = t
     },
     autoCore() {
       this.send('core')

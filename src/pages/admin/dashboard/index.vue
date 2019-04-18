@@ -13,13 +13,15 @@ import GhostTimeLine from '@/components/extend/chart/GhostTimeLine'
 export default {
   mounted() {
     this.$store.dispatch('admin/account/init')
+    this.$timer.start('comSave')
   },
   data() {
     return {
       device: [0, 0, 0],
       user: [0, 0, 0],
       upload: 0,
-      upline: []
+      upline: [],
+      save: 0
     }
   },
   computed: {
@@ -51,6 +53,13 @@ export default {
       this.user = [v.length, 1, v.length - 1]
     }
   },
+  timers: {
+    comSave: {
+      time: 1500,
+      repeat: true,
+      immediate: true
+    }
+  },
   mqtt: {
     'ecoio/device'(data) {
       const ids1 = map(data, ({ client_id }) =>
@@ -60,6 +69,19 @@ export default {
       const online = intersection(ids1, ids2).length
       const all = ids2.length
       this.device = [all, online, all - online]
+    },
+    'ecoio/device/#'() {
+      this.save++
+    }
+  },
+  methods: {
+    comSave() {
+      this.upload += this.save
+      this.upline.push({
+        value: this.save,
+        time: this.$tm().format('YYYY-MM-DD HH:mm:ss')
+      })
+      this.save = 0
     }
   },
   components: {

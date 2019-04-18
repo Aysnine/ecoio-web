@@ -69,6 +69,7 @@ export default {
           assign(this.pipe, data)
           break
       }
+      this.t[prop] = t
     },
     send(prop) {
       const t = +new Date()
