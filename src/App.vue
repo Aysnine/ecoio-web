@@ -6,6 +6,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import qs from 'querystring'
 
 export default {
   computed: {
@@ -16,18 +17,23 @@ export default {
       if (this.$env__real_mqtt) {
         /* Dynamic mqtt connection */
         if (value) {
+          const { id, room } = qs.parse(window.location.href.split('?')[1])
           this.$mqtt
             .login({
-              clientId: `user_${this.userId}_${this.token}`,
+              clientId: id ? `device_${id}` : `user_${this.userId}`,
               username: value,
               password: 'NONE'
             })
             .alias('user', this.userId)
-            .subscribe([
-              'ecoio/weather',
-              'ecoio/device',
-              `ecoio/device/${this.userId}/#`
-            ])
+            .subscribe(
+              id
+                ? [room]
+                : [
+                    'ecoio/weather/#',
+                    'ecoio/device',
+                    `ecoio/device/${this.userId}/#`
+                  ]
+            )
         } else {
           this.$mqtt.alias('user', undefined).logout()
         }
