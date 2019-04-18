@@ -12,6 +12,8 @@ import './components'
 
 import ElementUI from 'element-ui'
 Vue.use(ElementUI, { size: 'small' })
+import VueTimers from 'vue-timers'
+Vue.use(VueTimers)
 
 import 'normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
