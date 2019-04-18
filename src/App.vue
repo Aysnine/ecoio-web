@@ -23,7 +23,11 @@ export default {
               password: 'NONE'
             })
             .alias('user', this.userId)
-            .subscribe(['ecoio/#'])
+            .subscribe([
+              'ecoio/weather',
+              'ecoio/device',
+              `ecoio/device/${this.userId}/#`
+            ])
         } else {
           this.$mqtt.alias('user', undefined).logout()
         }

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+import spy from './modules/spy'
 import splash from './modules/splash'
 import admin from './modules/admin'
 
@@ -11,6 +12,7 @@ const routes = [
     path: '/404',
     component: () => import('../pages/404/index')
   },
+  ...spy,
   ...splash,
   ...admin,
   {

@@ -108,11 +108,6 @@ export default {
       return this.infos.filter(({ role }) => !role || role === this.userRole)
     }
   },
-  mqtt: {
-    '@/device'(data, topic) {
-      this.$log('MQTT', topic, data) // !DEBUG
-    }
-  },
   components: {
     InfoBlocks,
     GhostTimeLine
