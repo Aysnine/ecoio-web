@@ -2,6 +2,8 @@
   div
     template(v-if='status !== "offline"')
       div
+        ghost-line-percent.pv-5(ref='wt-line', label='XXX', :limit='100', color='#54a4f5', height='140px')
+      div
         el-switch(v-model='core.power')
       div
         el-slider(v-model='core.lightness', :min='1', :max='10', :disabled='!core.power', :show-tooltip="false")
@@ -11,6 +13,7 @@
 
 <script>
 import { find, assign } from 'lodash'
+import GhostLinePercent from '@/components/extend/chart/GhostLinePercent'
 
 export default {
   props: ['id', 'room'],
@@ -24,6 +27,9 @@ export default {
         power: false,
         lightness: 1
       },
+      pipe: {
+        wt: 0
+      },
       t: {}
     }
   },
@@ -33,6 +39,10 @@ export default {
     },
     'core.lightness'() {
       this.send('core')
+    },
+    'pipe.wt'(v) {
+      if (this.$refs['wt-line'])
+        this.$refs['wt-line'].push(this.$tm().format('YYYY-MM-DD HH:mm:ss'), v)
     }
   },
   mqtt: {
@@ -43,12 +53,15 @@ export default {
   },
   methods: {
     watcher({ prop, data, t }) {
-      if (t < this.t[prop]) {
+      if (t && t < this.t[prop]) {
         return
       }
       switch (prop) {
         case 'core':
           assign(this.core, data)
+          break
+        case 'pipe':
+          assign(this.pipe, data)
           break
       }
     },
@@ -60,6 +73,9 @@ export default {
         JSON.stringify({ prop, data: this.$data[prop], t })
       )
     }
+  },
+  components: {
+    GhostLinePercent
   }
 }
 </script>

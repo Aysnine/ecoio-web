@@ -18,12 +18,16 @@ export default {
   mounted() {
     this.$options.mqtt[this.room] = this.watcher
     this.send('core')
+    this.$timer.start('sendPipe')
   },
   data() {
     return {
       core: {
         power: false,
         lightness: 1
+      },
+      pipe: {
+        wt: 0
       },
       t: {}
     }
@@ -34,6 +38,9 @@ export default {
     },
     'core.lightness'() {
       this.send('core')
+    },
+    'pipe.wt'() {
+      this.send('pipe')
     }
   },
   computed: {
@@ -45,9 +52,16 @@ export default {
       return `background-color: rgb(${x}, ${x}, ${x})`
     }
   },
+  timers: {
+    sendPipe: {
+      time: 1000,
+      repeat: true,
+      immediate: true
+    }
+  },
   methods: {
     watcher({ prop, data, t }) {
-      if (t < this.t[prop]) {
+      if (t && t < this.t[prop]) {
         return
       }
       switch (prop) {
@@ -56,13 +70,25 @@ export default {
           break
       }
     },
-    send(prop) {
+    send(prop, force = false) {
+      if (force) {
+        this.$mqtt.publish(
+          this.room,
+          JSON.stringify({ prop, data: this.$data[prop] })
+        )
+        return
+      }
       const t = +new Date()
       this.t[prop] = t
       this.$mqtt.publish(
         this.room,
         JSON.stringify({ prop, data: this.$data[prop], t })
       )
+    },
+    sendPipe() {
+      if (this.core.power) {
+        this.pipe.wt = Math.random() * 10 + this.core.lightness * 8
+      }
     }
   },
   components: {
