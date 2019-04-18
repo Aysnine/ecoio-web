@@ -1,12 +1,17 @@
 <template lang="pug">
   div
     template(v-if='status !== "offline"')
-      div
-        ghost-line-percent.pv-5(ref='wt-line', label='XXX', :limit='100', color='#54a4f5', height='140px')
-      div
-        el-switch(v-model='core.power')
-      div
-        el-slider(v-model='core.lightness', :min='1', :max='10', :disabled='!core.power', :show-tooltip="false")
+      el-row
+        el-col(:span='16')
+          ghost-line-percent(ref='wt-line', label='实时耗能', :limit='100', color='#54a4f5', height='140px')
+        el-col(:span='8')
+          .pl-20
+            div
+              h3 开关
+              el-switch(v-model='core.power')
+            div
+              h3 亮度
+              el-slider(v-model='core.lightness', :min='1', :max='10', :disabled='!core.power', :show-tooltip="false")
     template(v-else)
       span 设备离线中...
 </template>

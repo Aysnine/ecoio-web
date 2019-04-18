@@ -19,6 +19,7 @@ export default {
     this.$options.mqtt[this.room] = this.watcher
     this.send('core')
     this.$timer.start('sendPipe')
+    this.$timer.start('autoCore')
   },
   data() {
     return {
@@ -57,6 +58,11 @@ export default {
       time: 1000,
       repeat: true,
       immediate: true
+    },
+    autoCore: {
+      time: 500,
+      repeat: true,
+      immediate: true
     }
   },
   methods: {
@@ -69,6 +75,9 @@ export default {
           assign(this.core, data)
           break
       }
+    },
+    autoCore() {
+      this.send('core')
     },
     send(prop, force = false) {
       if (force) {
