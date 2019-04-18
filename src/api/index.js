@@ -46,3 +46,23 @@ export const deleteAccount = id =>
     url: '/account/delete',
     data: qs.stringify({ id })
   })
+
+export const fetchDevice = () =>
+  req({
+    method: 'get',
+    url: '/device/fetch'
+  })
+
+export const deleteDevice = id =>
+  req({
+    method: 'post',
+    url: '/device/delete',
+    data: qs.stringify({ id })
+  })
+
+export const newDevice = form =>
+  req({
+    method: 'post',
+    url: '/device/new',
+    data: qs.stringify(form)
+  })

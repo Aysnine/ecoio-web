@@ -9,7 +9,7 @@
 <script>
 import InfoBlocks from './components/InfoBlocks'
 import WeatherBoard from './components/WeatherBoard'
-import { mapGetters, mapActions } from 'vuex'
+import { /* mapGetters,*/ mapActions } from 'vuex'
 import { get, assign } from 'lodash'
 
 const transer = ({
@@ -38,6 +38,33 @@ const transer = ({
   ]
 })
 
+const defaultWeathers = [
+  '101270503',
+  '101270505',
+  '101270506',
+  '101270507',
+  '101270601',
+  '101270604',
+  '101270605',
+  '101270608',
+  '101270701',
+  '101270801',
+  '101270901',
+  '101270903',
+  '101271601',
+  '101271805',
+  '101271817',
+  '101271902',
+  '101271910',
+  '101272003',
+  '101272005',
+  '101272101',
+  '101272102',
+  '101272103',
+  '101272104',
+  '101272105'
+]
+
 export default {
   mounted() {
     this.trigger()
@@ -49,7 +76,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['weathers']),
+    // ...mapGetters(['weathers']),
+    weathers() {
+      return defaultWeathers
+    },
     targetInfo() {
       return this.infos.find(i => i.label === this.target) || null
     }

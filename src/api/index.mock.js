@@ -127,5 +127,52 @@ export default [
         msg: '完成'
       }
     }
+  },
+  {
+    path: '/device/fetch',
+    method: 'get',
+    handle({ db, token }) {
+      let devices = db
+        .get('users')
+        .find({ token })
+        .get('data.devices')
+        .cloneDeep()
+        .value()
+      return {
+        code: 0,
+        msg: '成功',
+        data: devices
+      }
+    }
+  },
+  {
+    path: '/device/delete',
+    method: 'post',
+    handle({ db, body: { id }, token }) {
+      db.get('users')
+        .find({ token })
+        .get('data.devices')
+        .remove({ id })
+        .write()
+      return {
+        code: 0,
+        msg: '成功'
+      }
+    }
+  },
+  {
+    path: '/device/new',
+    method: 'post',
+    handle({ db, body: { name, type }, token, uid }) {
+      db.get('users')
+        .find({ token })
+        .get('data.devices')
+        .push({ id: uid(), name, type })
+        .write()
+      return {
+        code: 0,
+        msg: '成功'
+      }
+    }
   }
 ]

@@ -16,14 +16,22 @@ db.defaults({
       account: 'admin',
       nickname: '管理员',
       pass: 'admin',
-      role: 'admin'
+      role: 'admin',
+      data: {
+        weathers: [],
+        devices: []
+      }
     },
     {
       id: '2',
       account: 'member',
       nickname: '用户A',
       pass: 'member',
-      role: 'member'
+      role: 'member',
+      data: {
+        weathers: [],
+        devices: []
+      }
     }
   ],
   ...dict()
