@@ -15,7 +15,7 @@
     "element-ui": "^2.7.2",
     "fuse.js": "^3.4.4",
     "js-cookie": "^2.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "lowdb": "^1.0.0",
     "micromatch": "^4.0.1",
     "mockjs": "^1.0.1-beta3",
